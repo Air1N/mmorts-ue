@@ -53,7 +53,7 @@ io.on('connection', function(socket) {
         idList.push(userID);
     }
 
-    io.emit('updateValues', {
+    io.emit('initValues', {
         landPoints: landPoints,
         property: property,
         continents: continents,
