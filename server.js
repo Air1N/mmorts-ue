@@ -46,14 +46,14 @@ io.on('connection', function(socket) {
     
     console.log('ID: ' + userID + ' connected.');
     
-    io.emit('id', userID);
+    socket.emit('id', userID);
     
     if (idList.indexOf(userID) == -1) {
         generateProperty(userID);
         idList.push(userID);
     }
 
-    io.emit('initValues', {
+    socket.emit('initValues', {
         landPoints: landPoints,
         property: property,
         continents: continents,
