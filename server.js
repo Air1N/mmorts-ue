@@ -28,14 +28,18 @@ const landSize = 10;
 io.on('connection', function(socket) {
     userID = socket.request.connection.remoteAddress.replace(".", "");
     socket.send();
-    
+
     console.log('ID: ' + userID + ' connected.');
 
-    io.emit('land', landPoints);
-    io.emit('property', property);
-
     generateProperty(userID);
-    
+
+    setInterval(io.emit, 1000 / 3, 'updateValues', {
+        landPoints: landPoints,
+        property: property,
+        continents: continents,
+        landSize: landSize,
+        players: players
+    });
 });
 
 http.listen(port, function() {
