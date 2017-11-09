@@ -16,6 +16,13 @@ let landComplexity = 10000;
 
 let landPoints = [];
 
+for (let i = 0; i < continents; i++) {
+    landPoints.push([{
+        x: Math.random() * 200000 - 100000,
+        y: Math.random() * 200000 - 100000
+    }]);
+}
+
 let property = [
     []
 ];
