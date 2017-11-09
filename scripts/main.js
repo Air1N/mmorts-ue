@@ -52,7 +52,7 @@ socket.on('initValues', function(data) {
 });
 
 socket.on('id', function(userID) {
-    userID = userID;
+    if (userID === null) userID = userID;
 });
 
 setInterval(main, 1000 / 100);
