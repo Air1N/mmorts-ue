@@ -35,7 +35,7 @@ function render() {
     ctx.lineWidth = 3;
     for (let id in property) {
         ctx.beginPath();
-        ctx.moveTo(property[id].x, prop[id].y);
+        ctx.moveTo(property[id].x, property[id].y);
         for (let point of property[id]) {
             ctx.lineTo(point.x, point.y);
         }
