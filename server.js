@@ -39,7 +39,7 @@ for (let i = 0; i < continents; i++) {
 io.on('connection', function(socket) {
     userID = socket.handshake.address;
     
-    userID = userID.replace("::ffff:", "").replace(".", "");
+    userID = userID.replace(/::ffff:/gi, "").replace(/\./gi, "");
     
     console.log('ID: ' + userID + ' connected.');
 
