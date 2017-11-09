@@ -16,13 +16,6 @@ let landComplexity = 10000;
 
 let landPoints = [];
 
-for (let i = 0; i < continents; i++) {
-    landPoints.push([{
-        x: Math.random() * 200000 - 100000,
-        y: Math.random() * 200000 - 100000
-    }]);
-}
-
 let property = [
     []
 ];
@@ -30,7 +23,20 @@ let property = [
 let continents = 10;
 let players = 200;
 
+for (let i = 0; i < continents; i++) {
+    landPoints.push([{
+        x: Math.random() * 200000 - 100000,
+        y: Math.random() * 200000 - 100000
+    }]);
+}
+
 const landSize = 10;
+
+for (let i = 0; i < continents; i++) {
+    for (let j = 0; j < landComplexity; j++) {
+        generateLand(i, j);
+    }
+}
 
 io.on('connection', function(socket) {
     userID = socket.request.connection.remoteAddress.replace(".", "");
@@ -60,12 +66,6 @@ io.on('connection', function(socket) {
 http.listen(port, function() {
     console.log('listening on *:' + (port).toString());
 });
-
-for (let i = 0; i < continents; i++) {
-    for (let j = 0; j < landComplexity; j++) {
-        generateLand(i, j);
-    }
-}
 
 function generateLand(k, f) {
     let randomx = landSize * Math.round(Math.random() * 4 - 2);
