@@ -37,7 +37,7 @@ for (let i = 0; i < continents; i++) {
 }
 
 io.on('connection', function(socket) {
-    userID = socket.request.connection.remoteAddress.replace(".", "");
+    userID = socket.conn.remoteAddress;
 
     console.log('ID: ' + userID + ' connected.');
 
