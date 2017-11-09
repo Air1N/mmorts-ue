@@ -41,8 +41,8 @@ window.onmousemove = function(e) {
 			}
 		}
 		
-		for (let i = 0; i < property.length; i++) {
-			for (let point of property[i]) {
+		for (let id in property) {
+			for (let point of property[id]) {
 				point.x += mousex - lmx;
 				point.y += mousey - lmy;
 			}
@@ -69,8 +69,8 @@ window.onmousewheel = function(e) {
 			}
 		}
 		
-		for (let i = 0; i < property.length; i++) {
-			for (let point of property[i]) {
+		for (let id in property) {
+			for (let point of property[id]) {
 				point.x *= delta;
 				point.y *= delta;
 				
@@ -89,8 +89,8 @@ window.onmousewheel = function(e) {
 			}
 		}
 		
-		for (let i = 0; i < property.length; i++) {
-			for (let point of property[i]) {
+		for (let id in property) {
+			for (let point of property[id]) {
 				point.x /= Math.abs(delta);
 				point.y /= Math.abs(delta);
 		
