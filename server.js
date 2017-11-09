@@ -37,7 +37,7 @@ for (let i = 0; i < continents; i++) {
 }
 
 io.on('connection', function(socket) {
-    userID = socket.conn.remoteAddress;
+    userID = socket.handshake.address.address;
 
     console.log('ID: ' + userID + ' connected.');
 
