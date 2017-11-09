@@ -44,11 +44,15 @@ function render() {
     }
 }
 
-socket.on('updateValues', function(data) {
+socket.on('initValues', function(data) {
     landPoints = data.landPoints;
     property = data.property;
     continents = data.continents;
     players = data.players;
+});
+
+socket.on('id', function(userID) {
+    userID = userID;
 });
 
 setInterval(main, 1000 / 100);
