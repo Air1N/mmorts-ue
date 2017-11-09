@@ -46,7 +46,7 @@ io.on('connection', function(socket) {
     
     console.log('ID: ' + userID + ' connected.');
     
-    socket.send(userID);
+    io.emit('id', userID);
     
     if (idList.indexOf(userID) == -1) {
         generateProperty(userID);
