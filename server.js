@@ -33,18 +33,32 @@ io.on('connection', function(socket) {
 
     generateProperty(userID);
 
-    setInterval(io.emit, 1000 / 3, 'updateValues', {
+    io.emit('updateValues', {
         landPoints: landPoints,
         property: property,
         continents: continents,
         landSize: landSize,
         players: players
     });
+
+    /*setInterval(io.emit, 1000 / 3, 'updateValues', {
+        landPoints: landPoints,
+        property: property,
+        continents: continents,
+        landSize: landSize,
+        players: players
+    });*/
 });
 
 http.listen(port, function() {
     console.log('listening on *:' + (port).toString());
 });
+
+for (let i = 0; i < continents; i++) {
+    for (let j = 0; j < landComplexity; j++) {
+        generateLand(i, j);
+    }
+}
 
 function generateLand(k, f) {
     let randomx = landSize * Math.round(Math.random() * 4 - 2);
