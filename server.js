@@ -12,11 +12,13 @@ app.get('/', function(req, res) {
 
 let userID = 0;
 
+let clientID = 0;
+
 let landComplexity = 10000;
 
 let landPoints = [];
 
-let property = [];
+let property = {};
 
 let continents = 10;
 let players = 200;
@@ -38,11 +40,10 @@ for (let i = 0; i < continents; i++) {
 
 io.on('connection', function(socket) {
     userID = socket.handshake.address;
-    
     userID = userID.replace(/::ffff:/gi, "").replace(/\./gi, "");
     
     console.log('ID: ' + userID + ' connected.');
-
+    
     generateProperty(userID);
 
     io.emit('updateValues', {
