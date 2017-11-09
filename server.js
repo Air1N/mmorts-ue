@@ -16,9 +16,7 @@ let landComplexity = 10000;
 
 let landPoints = [];
 
-let property = [
-    []
-];
+let property = [];
 
 let continents = 10;
 let players = 200;
@@ -40,7 +38,6 @@ for (let i = 0; i < continents; i++) {
 
 io.on('connection', function(socket) {
     userID = socket.request.connection.remoteAddress.replace(".", "");
-    socket.send();
 
     console.log('ID: ' + userID + ' connected.');
 
