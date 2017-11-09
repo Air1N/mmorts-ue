@@ -51,8 +51,8 @@ socket.on('initValues', function(data) {
     players = data.players;
 });
 
-socket.on('id', function(userID) {
-    if (userID === null) userID = userID;
+socket.on('id', function(uID) {
+    if (userID === null) userID = uID;
 });
 
 setInterval(main, 1000 / 100);
