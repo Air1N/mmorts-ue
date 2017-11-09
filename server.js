@@ -17,7 +17,7 @@ let landComplexity = 10000;
 let landPoints = [];
 
 let property = [
-	[]
+    []
 ];
 
 let continents = 10;
@@ -26,11 +26,16 @@ let players = 200;
 const landSize = 10;
 
 io.on('connection', function(socket) {
+    userID = socket.id;
+    socket.send();
+    
     console.log('ID: ' + userID + ' connected.');
+
+    io.emit('land', landPoints);
+    io.emit('property', property);
+
+    generateProperty(userID);
     
-    //generateProperty(userID);
-    
-    userID++;
 });
 
 http.listen(port, function() {
