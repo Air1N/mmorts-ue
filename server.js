@@ -46,20 +46,20 @@ io.on('connection', function(socket) {
     
     console.log('ID: ' + userID + ' connected.');
     
-    socket.emit('id', userID);
-    
     if (idList.indexOf(userID) == -1) {
         generateProperty(userID);
         idList.push(userID);
     }
 
-    socket.emit('initValues', {
+    io.emit('initValues', {
         landPoints: landPoints,
         property: property,
         continents: continents,
         landSize: landSize,
         players: players
     });
+    
+    io.emit('id', userID);
 });
 
 http.listen(port, function() {
