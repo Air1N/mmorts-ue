@@ -6,13 +6,6 @@ var socket = io();
 let landPoints = [];
 let continents = 10;
 
-for (let i = 0; i < continents; i++) {
-	landPoints.push([{
-		x: Math.random() * 200000 - 100000,
-		y: Math.random() * 200000 - 100000
-	}]);
-}
-
 let mouseDown = false;
 
 let lmx = 0;
