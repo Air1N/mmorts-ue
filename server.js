@@ -4,9 +4,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var port = process.env.PORT || 80;
 
-app.use('/assets', express.static(__dirname + '/assets'));
 app.use('/scripts', express.static(__dirname + '/scripts'));
-app.use('/lib', express.static(__dirname + '/lib'));
 app.use('/', express.static(__dirname + '/'));
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
@@ -30,7 +28,7 @@ const landSize = 10;
 io.on('connection', function(socket) {
     console.log('ID: ' + userID + ' connected.');
     
-    generateProperty(userID);
+    //generateProperty(userID);
     
     userID++;
 });
@@ -64,12 +62,6 @@ function generateLand(k, f) {
         x: currentx + randomx + biasx,
         y: currenty + randomy + biasy
     });
-}
-
-for (let k = 0; k < continents; k++) {
-    for (let x = 0; x < landComplexity; x++) {
-        generateLand(k, x);
-    }
 }
 
 function generateProperty(k) {
