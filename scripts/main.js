@@ -48,7 +48,6 @@ socket.on('updateValues', function(data) {
     landPoints = data.landPoints;
     property = data.property;
     continents = data.continents;
-    landSize = data.landSize;
     players = data.players;
 });
 
