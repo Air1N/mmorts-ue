@@ -20,6 +20,8 @@ let landPoints = [];
 
 let property = {};
 
+let idList = [];
+
 let continents = 10;
 let players = 200;
 
@@ -44,7 +46,10 @@ io.on('connection', function(socket) {
     
     console.log('ID: ' + userID + ' connected.');
     
-    generateProperty(userID);
+    if (idList.indexOf(userID) == -1) {
+        generateProperty(userID);
+        idList.push(userID);
+    }
 
     io.emit('updateValues', {
         landPoints: landPoints,
@@ -53,14 +58,6 @@ io.on('connection', function(socket) {
         landSize: landSize,
         players: players
     });
-
-    /*setInterval(io.emit, 1000 / 3, 'updateValues', {
-        landPoints: landPoints,
-        property: property,
-        continents: continents,
-        landSize: landSize,
-        players: players
-    });*/
 });
 
 http.listen(port, function() {
