@@ -38,7 +38,9 @@ for (let i = 0; i < continents; i++) {
 
 io.on('connection', function(socket) {
     userID = socket.handshake.address;
-
+    
+    userID = userID.replace("::ffff:", "").replace(".", "");
+    
     console.log('ID: ' + userID + ' connected.');
 
     generateProperty(userID);
