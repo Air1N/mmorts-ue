@@ -26,7 +26,7 @@ let players = 200;
 const landSize = 10;
 
 io.on('connection', function(socket) {
-    userID = socket.id;
+    userID = socket.request.connection.remoteAddress.replace(".", "");
     socket.send();
     
     console.log('ID: ' + userID + ' connected.');
