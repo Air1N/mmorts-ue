@@ -1,6 +1,11 @@
 const display = document.getElementById("canvas");
 const ctx = display.getContext("2d");
 
+var socket = io();
+
+let landPoints = [];
+let continents = 10;
+
 for (let i = 0; i < continents; i++) {
 	landPoints.push([{
 		x: Math.random() * 200000 - 100000,
@@ -12,6 +17,18 @@ let mouseDown = false;
 
 let lmx = 0;
 let lmy = 0;
+
+let userID = 0;
+
+let landComplexity = 10000;
+
+let property = [
+    []
+];
+
+let players = 200;
+
+const landSize = 10;
 
 window.onmousedown = function(e) {
 	mouseDown = true;
