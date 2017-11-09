@@ -15,9 +15,7 @@ let userID = 0;
 
 let landComplexity = 10000;
 
-let property = [
-    []
-];
+let property = [];
 
 let players = 200;
 

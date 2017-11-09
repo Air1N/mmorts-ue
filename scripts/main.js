@@ -33,10 +33,10 @@ function render() {
 
     ctx.fillStyle = "rgba(255, 0, 0, 0.3)";
     ctx.lineWidth = 3;
-    for (let property of property) {
+    for (let prop of property) {
         ctx.beginPath();
-        ctx.moveTo(property[0].x, property[0].y);
-        for (let point of property[i]) {
+        ctx.moveTo(prop[0].x, prop[0].y);
+        for (let point of prop) {
             ctx.lineTo(point.x, point.y);
         }
         ctx.closePath();
