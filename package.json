@@ -1,6 +1,9 @@
 {
-  "name": "mmorts-ue",
-  "version": "0.0.1",
-  "description": "basic mmorts (for now)",
-  "dependencies": {}
+    "name": "mmorts-ue",
+    "version": "0.0.1",
+    "description": "basic mmorts (for now)",
+    "dependencies": {
+        "express": "^4.14.0",
+        "socket.io": "^2.0.4"
+    }
 }
