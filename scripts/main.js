@@ -13,16 +13,6 @@ function render() {
     for (let i = 0; i < landPoints.length; i++) {
         ctx.strokeStyle = "black";
         ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.moveTo(landPoints[i][0].x, landPoints[i][0].y);
-        
-        for (let j = 0; j < landPoints[i].length - 2; j += 2) {
-            ctx.quadraticCurveTo(landPoints[i][j + 1].x, landPoints[i][j + 1].y, landPoints[i][j + 2].x, landPoints[i][j + 2].y);
-        }
-        
-        ctx.closePath();
-        ctx.stroke();
-
         ctx.fillStyle = "green";
         ctx.beginPath();
         ctx.moveTo(landPoints[i][0].x, landPoints[i][0].y);
@@ -33,6 +23,7 @@ function render() {
         
         
         ctx.closePath();
+        ctx.stroke();
         ctx.fill();
     }
 
