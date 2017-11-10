@@ -12,7 +12,10 @@ function render() {
 
     for (let i = 0; i < landPoints.length; i++) {
         ctx.strokeStyle = "black";
-        ctx.lineWidth = 8;
+        ctx.lineWidth = 2;
+        ctx.lineJoin = "round";
+        ctx.lineCap = "round";
+        
         ctx.fillStyle = "green";
         ctx.beginPath();
         ctx.moveTo(landPoints[i][0].x, landPoints[i][0].y);
