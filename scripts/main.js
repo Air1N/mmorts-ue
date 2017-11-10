@@ -11,6 +11,8 @@ function render() {
     ctx.clearRect(0, 0, display.width, display.height);
 
     for (let i = 0; i < landPoints.length; i++) {
+        console.log(i);
+        
         ctx.strokeStyle = "black";
         ctx.lineWidth = 2;
         ctx.beginPath();
