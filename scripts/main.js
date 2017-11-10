@@ -29,9 +29,9 @@ function render() {
             ctx.lineTo(point.x, point.y);
         }
         
-        /*for (let j = 0; j < landPoints[i].length - 2; i++) {
-            ctx.quadraticCurveTo(landPoints[i][j + 1], landPoints[i][j + 1].y, landPoints[i][j + 2].x, landPoints[i][j + 2].y);
-        }*/
+        for (let mm = 0; j < landPoints[i].length - 2; i++) {
+            ctx.quadraticCurveTo(landPoints[i][mm + 1], landPoints[i][mm + 1].y, landPoints[i][mm + 2].x, landPoints[i][mm + 2].y);
+        }
         
         
         ctx.closePath();
