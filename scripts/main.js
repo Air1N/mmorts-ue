@@ -24,7 +24,7 @@ function render() {
         ctx.fillStyle = "green";
         ctx.beginPath();
         ctx.moveTo(landPoints[i][0].x, landPoints[i][0].y);
-        console.log(i);
+        console.log(landPoints[i]);
         
         for (let j = 0; j < landPoints[i].length - 2; i++) {
             ctx.quadraticCurveTo(landPoints[i][j + 1], landPoints[i][j + 1].y, landPoints[i][j + 2].x, landPoints[i][j + 2].y);
