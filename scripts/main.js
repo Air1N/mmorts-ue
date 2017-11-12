@@ -17,25 +17,25 @@ function render() {
         ctx.lineCap = "round";
         
         ctx.fillStyle = "black";
-    ctx.beginPath();
-    ctx.moveTo(landPoints[0].x, landPoints[0].y);
+        ctx.beginPath();
+        ctx.moveTo(landPoints[i][0].x + 1, landPoints[i][0].y + 1);
 
-    for (let i = 1; i < landPoints.length - 3; i += 4) {
-        ctx.bezierCurveTo(landPoints[i].x - 1, landPoints[i].y - 1, landPoints[i + 1].x - 1, landPoints[i + 1].y - 1, landPoints[i + 2].x - 1, landPoints[i + 2].y - 1, landPoints[i + 3].x - 1, landPoints[i + 3].y - 1);
-    }
+        for (let j = 1; j < landPoints[i].length - 3; j += 4) {
+            ctx.bezierCurveTo(landPoints[i][j].x + 1, landPoints[i][j].y + 1, landPoints[i][j + 1].x + 1, landPoints[i][j + 1].y + 1, landPoints[i][j + 2].x + 1, landPoints[i][j + 2].y + 1, landPoints[i][j + 3].x + 1, landPoints[i][j + 3].y + 1);
+        }
 
-    ctx.closePath();
-    ctx.fill();
+        ctx.closePath();
+        ctx.fill();
     
-    ctx.beginPath();
-    ctx.moveTo(landPoints[0].x, landPoints[0].y);
+        ctx.beginPath();
+        ctx.moveTo(landPoints[i][0].x - 1, landPoints[i][0].y - 1);
+        
+        for (let j = 1; j < landPoints[i].length - 3; j += 4) {
+            ctx.bezierCurveTo(landPoints[i][j].x - 1, landPoints[i][j].y - 1, landPoints[i][j + 1].x - 1, landPoints[i][j + 1].y - 1, landPoints[i][j + 2].x - 1, landPoints[i][j + 2].y - 1, landPoints[i][j + 3].x - 1, landPoints[i][j + 3].y - 1);
+        }
 
-    for (let i = 1; i < landPoints.length - 3; i += 4) {
-        ctx.bezierCurveTo(landPoints[i].x + 1, landPoints[i].y + 1, landPoints[i + 1].x + 1, landPoints[i + 1].y + 1, landPoints[i + 2].x + 1, landPoints[i + 2].y + 1, landPoints[i + 3].x + 1, landPoints[i + 3].y + 1);
-    }
-
-    ctx.closePath();
-    ctx.fill();
+        ctx.closePath();
+        ctx.fill();
         
         ctx.fillStyle = "green";
         ctx.beginPath();
