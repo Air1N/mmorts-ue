@@ -16,6 +16,27 @@ function render() {
         ctx.lineJoin = "round";
         ctx.lineCap = "round";
         
+        ctx.fillStyle = "black";
+    ctx.beginPath();
+    ctx.moveTo(landPoints[0].x, landPoints[0].y);
+
+    for (let i = 1; i < landPoints.length - 3; i += 4) {
+        ctx.bezierCurveTo(landPoints[i].x - 1, landPoints[i].y - 1, landPoints[i + 1].x - 1, landPoints[i + 1].y - 1, landPoints[i + 2].x - 1, landPoints[i + 2].y - 1, landPoints[i + 3].x - 1, landPoints[i + 3].y - 1);
+    }
+
+    ctx.closePath();
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.moveTo(landPoints[0].x, landPoints[0].y);
+
+    for (let i = 1; i < landPoints.length - 3; i += 4) {
+        ctx.bezierCurveTo(landPoints[i].x + 1, landPoints[i].y + 1, landPoints[i + 1].x + 1, landPoints[i + 1].y + 1, landPoints[i + 2].x + 1, landPoints[i + 2].y + 1, landPoints[i + 3].x + 1, landPoints[i + 3].y + 1);
+    }
+
+    ctx.closePath();
+    ctx.fill();
+        
         ctx.fillStyle = "green";
         ctx.beginPath();
         ctx.moveTo(landPoints[i][0].x, landPoints[i][0].y);
@@ -26,7 +47,6 @@ function render() {
         
         
         ctx.closePath();
-        ctx.stroke();
         ctx.fill();
     }
 
