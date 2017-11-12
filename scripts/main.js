@@ -19,12 +19,15 @@ function render() {
         ctx.fillStyle = "green";
         ctx.beginPath();
         ctx.moveTo(landPoints[i][0].x, landPoints[i][0].y);
-        
-        for (let j = 1; j < landPoints[i].length - 3; j += 4) {
-            ctx.bezierCurveTo(landPoints[i][j].x, landPoints[i][j].y, landPoints[i][j + 1].x, landPoints[i][j + 1].y, landPoints[i][j + 2].x, landPoints[i][j + 2].y, landPoints[i][j + 3].x, landPoints[i][j + 3].y);
+
+        for (j = 1; j < landPoints.length - 2; j++) {
+            var xc = (landPoints[i][j].x + landPoints[i][j + 1].x) / 2;
+            var yc = (landPoints[i][j].y + landPoints[i][j + 1].y) / 2;
+            ctx.quadraticCurveTo(landPoints[i][j].x, landPoints[i][j].y, xc, yc);
         }
-        
-        
+
+        ctx.quadraticCurveTo(landPoints[i][j].x, landPoints[i][j].y, landPoints[i][j + 1].x, landPoints[i][j + 1].y);
+
         ctx.closePath();
         ctx.stroke();
         ctx.fill();
