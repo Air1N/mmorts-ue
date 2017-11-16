@@ -27,8 +27,8 @@ let players = 200;
 
 for (let i = 0; i < continents; i++) {
     landPoints.push([{
-        x: Math.random() * 35000,
-        y: Math.random() * 35000
+        x: Math.random() * 15000 + 15000,
+        y: Math.random() * 15000 + 15000
     }]);
 }
 
