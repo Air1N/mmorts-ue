@@ -9,44 +9,43 @@ function update() {
 
 function render() {
     ctx.clearRect(0, 0, display.width, display.height);
-    
-    ctx.drawImage(map, cropx, cropy, 1920 / cropsize, 1080 / cropsize, 0, 0, 1920, 1080);
-}
 
-function drawMap() {
     for (let i = 0; i < landPoints.length; i++) {
-        mtx.strokeStyle = "black";
-        mtx.lineWidth = 2;
-        mtx.lineJoin = "round";
-        mtx.lineCap = "round";
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 2;
+        ctx.lineJoin = "round";
+        ctx.lineCap = "round";
         
-        mtx.fillStyle = "green";
-        mtx.beginPath();
-        mtx.moveTo(landPoints[i][0].x, landPoints[i][0].y);
+        ctx.fillStyle = "green";
+        ctx.beginPath();
+        ctx.moveTo(landPoints[i][0].x, landPoints[i][0].y);
 
         for (j = 1; j < landPoints[i].length - 2; j++) {
+            if (landPoints[i][j].x < 0 || landPoints[i][j].x > display.width) continue;
+            if (landPoints[i][j].y < 0 || landPoints[i][j].y > display.height) continue;
+            
             var xc = (landPoints[i][j].x + landPoints[i][j + 1].x) / 2;
             var yc = (landPoints[i][j].y + landPoints[i][j + 1].y) / 2;
-            mtx.quadraticCurveTo(landPoints[i][j].x, landPoints[i][j].y, xc, yc);
+            ctx.quadraticCurveTo(landPoints[i][j].x, landPoints[i][j].y, xc, yc);
         }
 
-        mtx.quadraticCurveTo(landPoints[i][j].x, landPoints[i][j].y, landPoints[i][j + 1].x, landPoints[i][j + 1].y);
+        ctx.quadraticCurveTo(landPoints[i][j].x, landPoints[i][j].y, landPoints[i][j + 1].x, landPoints[i][j + 1].y);
 
-        mtx.closePath();
-        mtx.stroke();
-        mtx.fill();
+        ctx.closePath();
+        ctx.stroke();
+        ctx.fill();
     }
 
-    mtx.fillStyle = "rgba(255, 0, 0, 0.3)";
-    mtx.lineWidth = 3;
+    ctx.fillStyle = "rgba(255, 0, 0, 0.3)";
+    ctx.lineWidth = 3;
     for (let id in property) {
-        mtx.beginPath();
-        mtx.moveTo(property[id].x, property[id].y);
+        ctx.beginPath();
+        ctx.moveTo(property[id].x, property[id].y);
         for (let point of property[id]) {
-            mtx.lineTo(point.x, point.y);
+            ctx.lineTo(point.x, point.y);
         }
-        mtx.closePath();
-        mtx.fill();
+        ctx.closePath();
+        ctx.fill();
     }
 }
 
@@ -55,8 +54,6 @@ socket.on('initValues', function(data) {
     property = data.property;
     continents = data.continents;
     players = data.players;
-    
-    drawMap();
 });
 
 socket.on('id', function(uID) {
