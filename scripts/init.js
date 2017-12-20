@@ -16,6 +16,8 @@ let lmy = 0;
 let cropx = 0;
 let cropy = 0;
 
+let cropsize = 1;
+
 let userID = null;
 
 let landComplexity = 10000;
@@ -64,44 +66,14 @@ window.onmousewheel = function(e) {
 	mousey = (e.clientY - display.getBoundingClientRect().top) * (display.height / display.clientHeight);
 
 	if (delta > 0) {
-		for (let i = 0; i < landPoints.length; i++) {
-			for (let point of landPoints[i]) {
-				point.x *= delta;
-				point.y *= delta;
+		cropsize *= delta;
 
-				point.x -= mousex;
-				point.y -= mousey;
-			}
-		}
-		
-		for (let id in property) {
-			for (let point of property[id]) {
-				point.x *= delta;
-				point.y *= delta;
-				
-				point.x -= mousex;
-				point.y -= mousey;
-			}
-		}
+		cropx -= mousex;
+		cropy -= mousey;
 	} else {
-		for (let i = 0; i < landPoints.length; i++) {
-			for (let point of landPoints[i]) {
-				point.x /= Math.abs(delta);
-				point.y /= Math.abs(delta);
+		cropsize /= Math.abs(delta);
 		
-				point.x += mousex / Math.abs(delta);
-				point.y += mousey / Math.abs(delta);
-			}
-		}
-		
-		for (let id in property) {
-			for (let point of property[id]) {
-				point.x /= Math.abs(delta);
-				point.y /= Math.abs(delta);
-		
-				point.x += mousex / Math.abs(delta);
-				point.y += mousey / Math.abs(delta);
-			}
-		}
+		cropx += mousex / Math.abs(delta);
+		cropy += mousey / Math.abs(delta);
 	}
 };
