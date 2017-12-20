@@ -41,8 +41,8 @@ window.onmousemove = function(e) {
 	mousey = (e.clientY - display.getBoundingClientRect().top) * (display.height / display.clientHeight);
 
 	if (mouseDown) {
-		cropx -= mousex - lmx;
-		cropy -= mousey - lmy;
+		cropx -= (mousex - lmx) / cropsize;
+		cropy -= (mousey - lmy) / cropsize;
 	}
 
 	lmx = mousex;
@@ -57,12 +57,12 @@ window.onmousewheel = function(e) {
 	if (delta > 0) {
 		cropsize *= delta;
 
-		cropx -= mousex;
-		cropy -= mousey;
+		cropx -= mousex / cropsize;
+		cropy -= mousey / cropsize;
 	} else {
 		cropsize /= Math.abs(delta);
 		
-		cropx += mousex / Math.abs(delta);
-		cropy += mousey / Math.abs(delta);
+		cropx += mousex / Math.abs(delta) / cropsize;
+		cropy += mousey / Math.abs(delta) / cropsize;
 	}
 };
