@@ -1,6 +1,8 @@
 const display = document.getElementById("canvas");
 const ctx = display.getContext("2d");
 
+const mtx = map.getContext("2d");
+
 var socket = io();
 
 let landPoints = [];
