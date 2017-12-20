@@ -61,5 +61,5 @@ socket.on('id', function(uID) {
     if (userID === null) userID = uID;
 });
 
-setInterval(main, 1000 / 100);
 drawMap();
+setInterval(main, 1000 / 100);
