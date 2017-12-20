@@ -9,6 +9,8 @@ function update() {
 
 function render() {
     ctx.clearRect(0, 0, display.width, display.height);
+    
+    ctx.drawImage(map, 0, 0);
 }
 
 function drawMap() {
