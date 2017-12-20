@@ -21,8 +21,8 @@ function render() {
         ctx.moveTo(landPoints[i][0].x, landPoints[i][0].y);
 
         for (j = 1; j < landPoints[i].length - 2; j += Math.max(Math.round(5 / zoomLevel), 1)) {
-            //if (landPoints[i][j].x < 0 || landPoints[i][j].x > display.width) continue;
-            //if (landPoints[i][j].y < 0 || landPoints[i][j].y > display.height) continue;
+            if (landPoints[i][j].x < 0 || landPoints[i][j].x > display.width) continue;
+            if (landPoints[i][j].y < 0 || landPoints[i][j].y > display.height) continue;
             
             var xc = (landPoints[i][j].x + landPoints[i][j + 1].x) / 2;
             var yc = (landPoints[i][j].y + landPoints[i][j + 1].y) / 2;
