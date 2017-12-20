@@ -57,12 +57,12 @@ window.onmousewheel = function(e) {
 	if (delta > 0) {
 		cropsize *= delta;
 
-		cropx -= mousex / cropsize;
-		cropy -= mousey / cropsize;
+		cropx -= mousex;
+		cropy -= mousey;
 	} else {
 		cropsize /= Math.abs(delta);
 		
-		cropx += mousex / Math.abs(delta) / cropsize;
-		cropy += mousey / Math.abs(delta) / cropsize;
+		cropx += mousex / Math.abs(delta);
+		cropy += mousey / Math.abs(delta);
 	}
 };
