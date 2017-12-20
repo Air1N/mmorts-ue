@@ -83,7 +83,7 @@ window.onmousewheel = function(e) {
 				point.y -= mousey;
 			}
 		}
-	} else if (zoomLevel > 0.25) {
+	} else if (zoomLevel > -1) {
 		zoomLevel /= Math.abs(delta);
 		
 		for (let i = 0; i < landPoints.length; i++) {
