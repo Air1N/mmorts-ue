@@ -10,7 +10,7 @@ function update() {
 function render() {
     ctx.clearRect(0, 0, display.width, display.height);
     
-    ctx.drawImage(map, 0, 0, 1920, 1080);
+    ctx.drawImage(map, cropx, cropy, 1920, 1080);
 }
 
 function drawMap() {
