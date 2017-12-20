@@ -41,19 +41,8 @@ window.onmousemove = function(e) {
 	mousey = (e.clientY - display.getBoundingClientRect().top) * (display.height / display.clientHeight);
 
 	if (mouseDown) {
-		for (let i = 0; i < landPoints.length; i++) {
-			for (let point of landPoints[i]) {
-				cropx -= cropx - lmx;
-				cropy -= cropx - lmy;
-			}
-		}
-		
-		for (let id in property) {
-			for (let point of property[id]) {
-				cropx -= cropx - lmx;
-				cropy -= cropx - lmy;
-			}
-		}
+		cropx -= mousex - lmx;
+		cropy -= mousey - lmy;
 	}
 
 	lmx = mousex;
