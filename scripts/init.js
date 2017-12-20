@@ -19,6 +19,8 @@ let property = [];
 
 let players = 200;
 
+let zoomLevel = 1;
+
 const landSize = 10;
 
 window.onmousedown = function(e) {
@@ -63,6 +65,8 @@ window.onmousewheel = function(e) {
 			for (let point of landPoints[i]) {
 				point.x *= delta;
 				point.y *= delta;
+				
+				zoomLevel *= delta;
 
 				point.x -= mousex;
 				point.y -= mousey;
@@ -83,7 +87,9 @@ window.onmousewheel = function(e) {
 			for (let point of landPoints[i]) {
 				point.x /= Math.abs(delta);
 				point.y /= Math.abs(delta);
-		
+				
+				zoomLevel /= Math.abs(delta);
+				
 				point.x += mousex / Math.abs(delta);
 				point.y += mousey / Math.abs(delta);
 			}
