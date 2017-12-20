@@ -27,7 +27,7 @@ let property = [];
 let players = 200;
 
 const landSize = 1;
-
+/*
 window.onmousedown = function(e) {
 	mouseDown = true;
 };
@@ -77,3 +77,4 @@ window.onmousewheel = function(e) {
 		cropy += mousey / Math.abs(delta);
 	}
 };
+*/
