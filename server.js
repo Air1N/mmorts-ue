@@ -14,7 +14,7 @@ let userID = 0;
 
 let clientID = 0;
 
-let landComplexity = 50000;
+let landComplexity = 150000;
 
 let landPoints = [];
 
