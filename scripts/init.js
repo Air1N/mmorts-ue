@@ -1,6 +1,6 @@
-/*const display = document.getElementById("canvas");
+const display = document.getElementById("canvas");
 const ctx = display.getContext("2d");
-*/
+
 const mtx = map.getContext("2d");
 
 var socket = io();
@@ -27,7 +27,7 @@ let property = [];
 let players = 200;
 
 const landSize = 1;
-/*
+
 window.onmousedown = function(e) {
 	mouseDown = true;
 };
@@ -77,4 +77,3 @@ window.onmousewheel = function(e) {
 		cropy += mousey / Math.abs(delta);
 	}
 };
-*/
