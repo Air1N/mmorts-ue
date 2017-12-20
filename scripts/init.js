@@ -13,6 +13,9 @@ let mouseDown = false;
 let lmx = 0;
 let lmy = 0;
 
+let cropx = 0;
+let cropy = 0;
+
 let userID = null;
 
 let landComplexity = 10000;
