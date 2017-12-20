@@ -29,7 +29,7 @@ function render() {
             ctx.quadraticCurveTo(landPoints[i][j].x, landPoints[i][j].y, xc, yc);
         }
 
-        ctx.quadraticCurveTo(landPoints[i][j].x, landPoints[i][j].y, landPoints[i][j + 1].x, landPoints[i][j + 1].y);
+        ctx.quadraticCurveTo(landPoints[i][landPoints[i].length - 2].x, landPoints[i][landPoints[i].length - 2].y, landPoints[i][landPoints[i].length - 1].x, landPoints[i][landPoints[i].length - 1].y);
 
         ctx.closePath();
         ctx.stroke();
