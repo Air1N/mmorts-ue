@@ -1,6 +1,6 @@
 function main() {
     update();
-    render();
+    //render();
 }
 
 function update() {
