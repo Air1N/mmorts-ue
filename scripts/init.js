@@ -1,8 +1,6 @@
 const display = document.getElementById("canvas");
 const ctx = display.getContext("2d");
 
-const mtx = map.getContext("2d");
-
 var socket = io();
 
 let landPoints = [];
@@ -12,11 +10,6 @@ let mouseDown = false;
 
 let lmx = 0;
 let lmy = 0;
-
-let cropx = 0;
-let cropy = 0;
-
-let cropsize = 1;
 
 let userID = null;
 
@@ -41,8 +34,19 @@ window.onmousemove = function(e) {
 	mousey = (e.clientY - display.getBoundingClientRect().top) * (display.height / display.clientHeight);
 
 	if (mouseDown) {
-		cropx -= (mousex - lmx) / cropsize;
-		cropy -= (mousey - lmy) / cropsize;
+		for (let i = 0; i < landPoints.length; i++) {
+			for (let point of landPoints[i]) {
+				point.x += mousex - lmx;
+				point.y += mousey - lmy;
+			}
+		}
+		
+		for (let id in property) {
+			for (let point of property[id]) {
+				point.x += mousex - lmx;
+				point.y += mousey - lmy;
+			}
+		}
 	}
 
 	lmx = mousex;
@@ -55,14 +59,44 @@ window.onmousewheel = function(e) {
 	mousey = (e.clientY - display.getBoundingClientRect().top) * (display.height / display.clientHeight);
 
 	if (delta > 0) {
-		cropsize *= delta;
+		for (let i = 0; i < landPoints.length; i++) {
+			for (let point of landPoints[i]) {
+				point.x *= delta;
+				point.y *= delta;
 
-		cropx -= mousex;
-		cropy -= mousey;
-	} else {
-		cropsize /= Math.abs(delta);
+				point.x -= mousex;
+				point.y -= mousey;
+			}
+		}
 		
-		cropx += mousex / Math.abs(delta);
-		cropy += mousey / Math.abs(delta);
+		for (let id in property) {
+			for (let point of property[id]) {
+				point.x *= delta;
+				point.y *= delta;
+				
+				point.x -= mousex;
+				point.y -= mousey;
+			}
+		}
+	} else {
+		for (let i = 0; i < landPoints.length; i++) {
+			for (let point of landPoints[i]) {
+				point.x /= Math.abs(delta);
+				point.y /= Math.abs(delta);
+		
+				point.x += mousex / Math.abs(delta);
+				point.y += mousey / Math.abs(delta);
+			}
+		}
+		
+		for (let id in property) {
+			for (let point of property[id]) {
+				point.x /= Math.abs(delta);
+				point.y /= Math.abs(delta);
+		
+				point.x += mousex / Math.abs(delta);
+				point.y += mousey / Math.abs(delta);
+			}
+		}
 	}
 };
