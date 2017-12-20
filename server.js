@@ -32,7 +32,7 @@ for (let i = 0; i < continents; i++) {
     }]);
 }
 
-const landSize = 1;
+const landSize = 10;
 
 for (let i = 0; i < continents; i++) {
     for (let j = 0; j < landComplexity; j++) {
