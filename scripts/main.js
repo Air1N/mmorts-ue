@@ -20,7 +20,7 @@ function render() {
         ctx.beginPath();
         ctx.moveTo(landPoints[i][0].x, landPoints[i][0].y);
 
-        for (j = 1; j < landPoints[i].length - 2; j += Math.max(Math.round(8 / zoomLevel), 1)) {
+        for (j = 1; j < landPoints[i].length - landPoints[i][j + Math.max(Math.round(8 / zoomLevel), 1) - 1; j += Math.max(Math.round(8 / zoomLevel), 1)) {
             if (landPoints[i][j].x < 0 - 500 * zoomLevel || landPoints[i][j].x > display.width + 500 * zoomLevel) continue;
             if (landPoints[i][j].y < 0 - 500 * zoomLevel || landPoints[i][j].y > display.height + 500 * zoomLevel) continue;
             
@@ -29,7 +29,7 @@ function render() {
             ctx.quadraticCurveTo(landPoints[i][j].x, landPoints[i][j].y, xc, yc);
         }
 
-        ctx.quadraticCurveTo(landPoints[i][landPoints[i].length - 2].x, landPoints[i][landPoints[i].length - 2].y, landPoints[i][landPoints[i].length - 1].x, landPoints[i][landPoints[i].length - 1].y);
+        ctx.quadraticCurveTo(landPoints[i][j].x, landPoints[i][j].y, landPoints[i][landPoints[i].length - 1].x, landPoints[i][landPoints[i].length - 1].y);
 
         ctx.closePath();
         ctx.stroke();
