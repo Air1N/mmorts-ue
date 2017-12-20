@@ -55,11 +55,12 @@ socket.on('initValues', function(data) {
     property = data.property;
     continents = data.continents;
     players = data.players;
+    
+    drawMap();
 });
 
 socket.on('id', function(uID) {
     if (userID === null) userID = uID;
 });
 
-drawMap();
 setInterval(main, 1000 / 100);
