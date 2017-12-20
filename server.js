@@ -27,12 +27,12 @@ let players = 200;
 
 for (let i = 0; i < continents; i++) {
     landPoints.push([{
-        x: Math.random() * 60000,
-        y: Math.random() * 60000
+        x: Math.random() * 1920,
+        y: Math.random() * 1080
     }]);
 }
 
-const landSize = 10;
+const landSize = 1;
 
 for (let i = 0; i < continents; i++) {
     for (let j = 0; j < landComplexity; j++) {
