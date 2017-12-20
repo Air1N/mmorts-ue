@@ -60,7 +60,7 @@ window.onmousewheel = function(e) {
 	mousex = (e.clientX - display.getBoundingClientRect().left) * (display.width / display.clientWidth);
 	mousey = (e.clientY - display.getBoundingClientRect().top) * (display.height / display.clientHeight);
 
-	if (delta > 0) {
+	if (delta > 0 && zoomLevel < 8) {
 		zoomLevel *= delta;
 		
 		for (let i = 0; i < landPoints.length; i++) {
@@ -83,8 +83,9 @@ window.onmousewheel = function(e) {
 				point.y -= mousey;
 			}
 		}
-	} else {
+	} else if (zoomLevel > 0.25) {
 		zoomLevel /= Math.abs(delta);
+		
 		for (let i = 0; i < landPoints.length; i++) {
 			for (let point of landPoints[i]) {
 				point.x /= Math.abs(delta);
