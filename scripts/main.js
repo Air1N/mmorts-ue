@@ -9,7 +9,9 @@ function update() {
 
 function render() {
     ctx.clearRect(0, 0, display.width, display.height);
+}
 
+function drawMap() {
     for (let i = 0; i < landPoints.length; i++) {
         ctx.strokeStyle = "black";
         ctx.lineWidth = 2;
@@ -21,9 +23,6 @@ function render() {
         ctx.moveTo(landPoints[i][0].x, landPoints[i][0].y);
 
         for (j = 1; j < landPoints[i].length - 2; j++) {
-            if (landPoints[i][j].x < 0 - 500 || landPoints[i][j].x > display.width + 500) continue;
-            if (landPoints[i][j].y < 0 - 500 || landPoints[i][j].y > display.height + 500) continue;
-            
             var xc = (landPoints[i][j].x + landPoints[i][j + 1].x) / 2;
             var yc = (landPoints[i][j].y + landPoints[i][j + 1].y) / 2;
             ctx.quadraticCurveTo(landPoints[i][j].x, landPoints[i][j].y, xc, yc);
