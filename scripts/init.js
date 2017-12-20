@@ -38,15 +38,15 @@ window.onmousemove = function(e) {
 	if (mouseDown) {
 		for (let i = 0; i < landPoints.length; i++) {
 			for (let point of landPoints[i]) {
-				point.x += mousex - lmx;
-				point.y += mousey - lmy;
+				cropx -= lmx;
+				cropy -= lmy;
 			}
 		}
 		
 		for (let id in property) {
 			for (let point of property[id]) {
-				point.x += mousex - lmx;
-				point.y += mousey - lmy;
+				cropx -= lmx;
+				cropy -= lmy;
 			}
 		}
 	}
