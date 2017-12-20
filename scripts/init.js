@@ -13,7 +13,7 @@ let lmy = 0;
 
 let userID = null;
 
-let landComplexity = 50000;
+let landComplexity = 150000;
 
 let property = [];
 
