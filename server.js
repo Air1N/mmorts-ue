@@ -67,8 +67,8 @@ http.listen(port, function() {
 });
 
 function generateLand(k, f) {
-    let randomx = landSize * Math.round(Math.random() * 8 - 4);
-    let randomy = landSize * Math.round(Math.random() * 8 - 4);
+    let randomx = landSize * Math.round(Math.random() * 4 - 2);
+    let randomy = landSize * Math.round(Math.random() * 4 - 2);
 
     let currentx = landPoints[k][landPoints[k].length - 1].x;
     let currenty = landPoints[k][landPoints[k].length - 1].y;
@@ -81,7 +81,7 @@ function generateLand(k, f) {
         biasy = Math.round((landPoints[k][0].y - currenty) / (landComplexity - f + 50)) * landSize;
     } else {
         for (let i = 0; i < landPoints[k].length; i++) {
-            if (landPoints[k][i].x == currentx + randomx && landPoints[k][i].y == currenty + randomy) {
+            if (landPoints[k][i].x == currentx + randomx) {
                 return;
             }
         }
@@ -112,7 +112,7 @@ function generateProperty(k) {
         let currenty = property[k][property[k].length - 1].y;
 
         for (let i = 0; i < property[k].length; i++) {
-            if (property[k][i].x == currentx + randomx) {
+            if (property[k][i].x == currentx + randomx && property[k][i].y == currenty + randomy) {
                 return;
             }
         }
