@@ -112,7 +112,7 @@ function generateProperty(k) {
         let currenty = property[k][property[k].length - 1].y;
 
         for (let i = 0; i < property[k].length; i++) {
-            if (property[k][i].x == currentx + randomx && property[k][i].y == currenty + randomy) {
+            if (property[k][i].x == currentx + randomx) {
                 return;
             }
         }
