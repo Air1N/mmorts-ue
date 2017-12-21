@@ -14,7 +14,7 @@ let userID = 0;
 
 let clientID = 0;
 
-let landComplexity = 300000;
+let landComplexity = 100000;
 
 let landPoints = [];
 
@@ -32,7 +32,7 @@ for (let i = 0; i < continents; i++) {
     }]);
 }
 
-const landSize = 10;
+const landSize = 1;
 
 for (let i = 0; i < continents; i++) {
     for (let j = 0; j < landComplexity; j++) {
