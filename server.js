@@ -25,21 +25,6 @@ let idList = [];
 let continents = 10;
 let players = 200;
 
-for (let i = 0; i < continents; i++) {
-    landPoints.push([{
-        x: Math.random() * 60000,
-        y: Math.random() * 60000
-    }]);
-}
-
-const landSize = 0.1;
-
-for (let i = 0; i < continents; i++) {
-    for (let j = 0; j < landComplexity; j++) {
-        generateLand(i, j);
-    }
-}
-
 io.on('connection', function(socket) {
     userID = socket.handshake.address;
     userID = userID.replace(/::ffff:/gi, "").replace(/\./gi, "");
@@ -121,5 +106,21 @@ function generateProperty(k) {
             x: currentx + randomx,
             y: currenty + randomy
         });
+    }
+}
+
+
+for (let i = 0; i < continents; i++) {
+    landPoints.push([{
+        x: Math.random() * 60000,
+        y: Math.random() * 60000
+    }]);
+}
+
+const landSize = 0.1;
+
+for (let i = 0; i < continents; i++) {
+    for (let j = 0; j < landComplexity; j++) {
+        generateLand(i, j);
     }
 }
