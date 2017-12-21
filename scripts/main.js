@@ -7,7 +7,7 @@ function update() {
 
 }
 
-let zoomLayers = 10;
+let zoomLayers = 32;
 
 function render() {
     ctx.clearRect(0, 0, display.width, display.height);
