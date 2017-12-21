@@ -7,6 +7,8 @@ function update() {
 
 }
 
+let zoomLayers = 10;
+
 function render() {
     ctx.clearRect(0, 0, display.width, display.height);
 
@@ -19,13 +21,13 @@ function render() {
         ctx.fillStyle = "green";
         ctx.beginPath();
         ctx.moveTo(landPoints[i][0].x, landPoints[i][0].y);
-
-        for (j = 1; j < landPoints[i].length - Math.max(Math.round(8 / zoomLevel), 1) - 1; j += Math.max(Math.round(2 / zoomLevel), 1)) {
+        
+        for (j = 1; j < landPoints[i].length - Math.max(Math.round(zoomLayers / zoomLevel), 1) - 1; j += Math.max(Math.round(zoomLayers / zoomLevel), 1)) {
             if (landPoints[i][j].x < 0 - 500 * zoomLevel || landPoints[i][j].x > display.width + 500 * zoomLevel) continue;
             if (landPoints[i][j].y < 0 - 500 * zoomLevel || landPoints[i][j].y > display.height + 500 * zoomLevel) continue;
             
-            var xc = (landPoints[i][j].x + landPoints[i][j + Math.max(Math.round(2 / zoomLevel), 1)].x) / 2;
-            var yc = (landPoints[i][j].y + landPoints[i][j + Math.max(Math.round(2 / zoomLevel), 1)].y) / 2;
+            var xc = (landPoints[i][j].x + landPoints[i][j + Math.max(Math.round(zoomLayers / zoomLevel), 1)].x) / 2;
+            var yc = (landPoints[i][j].y + landPoints[i][j + Math.max(Math.round(zoomLayers / zoomLevel), 1)].y) / 2;
             ctx.quadraticCurveTo(landPoints[i][j].x, landPoints[i][j].y, xc, yc);
         }
 
