@@ -85,7 +85,7 @@ window.onmousewheel = function(e) {
 		}
 	}
 	
-	if (delta < 0 && zoomLevel > 0.03125 / 2) {
+	if (delta < 0 && zoomLevel > -1) {
 		zoomLevel /= Math.abs(delta);
 		
 		for (let i = 0; i < landPoints.length; i++) {
