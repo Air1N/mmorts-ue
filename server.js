@@ -67,8 +67,8 @@ http.listen(port, function() {
 });
 
 function generateLand(k, f) {
-    let randomx = landSize * Math.ceil(Math.random() * 4 - 2);
-    let randomy = landSize * Math.ceil(Math.random() * 4 - 2);
+    let randomx = landSize * Math.ceil(Math.random() * 4 - 2.5);
+    let randomy = landSize * Math.ceil(Math.random() * 4 - 2.5);
 
     let currentx = landPoints[k][landPoints[k].length - 1].x;
     let currenty = landPoints[k][landPoints[k].length - 1].y;
