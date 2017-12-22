@@ -19,9 +19,9 @@ let property = [];
 
 let players = 200;
 
-let zoomLevel = 1 / 64;
+let zoomLevel = 1 / 256;
 
-const landSize = 0.0000005;
+const landSize = 0.00005;
 
 window.onmousedown = function(e) {
 	mouseDown = true;
