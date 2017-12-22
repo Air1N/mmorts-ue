@@ -21,6 +21,8 @@ let players = 200;
 
 let zoomLevel = 1 / 32;
 
+let zoomLayers = 32;
+
 const landSize = 0.005;
 
 window.onmousedown = function(e) {
