@@ -14,7 +14,7 @@ let userID = 0;
 
 let clientID = 0;
 
-let landComplexity = 300000;
+let landComplexity = 1000000;
 
 let landPoints = [];
 
@@ -24,35 +24,6 @@ let idList = [];
 
 let continents = 1;
 let players = 200;
-
-function sortNearest(arr, i) {
-    let tempArr = [];
-    let tempArr2 = [];
-    let nearestDistance = Infinity;
-    let nearestPoint = {};
-
-    for (let i = 0; i < arr.length; i++) {
-        tempArr.push(arr[i]);
-    }
-
-    for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < tempArr.length; j++) {
-            if (arr[i].x == tempArr[j].x && arr[i].y == tempArr[j].y) continue;
-            if (Math.pow(arr[i].x - tempArr[j].x, 2) + Math.pow(arr[i].y - tempArr[j].y, 2) < nearestDistance) {
-                nearestDistance = Math.pow(arr[i].x - tempArr[j].x, 2) + Math.pow(arr[i].y - tempArr[j].y, 2);
-                nearestPoint = tempArr[j];
-            }
-        }
-        
-        console.log(Math.sqrt(nearestDistance));
-        
-        nearestDistance = Infinity;
-        tempArr2.push(nearestPoint);
-        tempArr.splice(tempArr.indexOf(nearestPoint), 1);
-    }
-    
-    landPoints[i] = tempArr2;
-}
 
 io.on('connection', function(socket) {
     userID = socket.handshake.address;
@@ -152,8 +123,4 @@ for (let i = 0; i < continents; i++) {
     for (let j = 0; j < landComplexity; j++) {
         generateLand(i, j);
     }
-}
-
-for (let i = 0; i < landPoints.length; i++) {
-    sortNearest(landPoints[i], i);
 }
