@@ -14,7 +14,7 @@ let userID = 0;
 
 let clientID = 0;
 
-let landComplexity = 1000000;
+let landComplexity = 300000;
 
 let landPoints = [];
 
@@ -22,7 +22,7 @@ let property = {};
 
 let idList = [];
 
-let continents = 10;
+let continents = 1;
 let players = 200;
 
 io.on('connection', function(socket) {
@@ -112,12 +112,12 @@ function generateProperty(k) {
 
 for (let i = 0; i < continents; i++) {
     landPoints.push([{
-        x: Math.random() * 60000,
-        y: Math.random() * 60000
+        x: Math.random() * 1920,
+        y: Math.random() * 1080
     }]);
 }
 
-const landSize = 0.01;
+const landSize = 0.0000005;
 
 for (let i = 0; i < continents; i++) {
     for (let j = 0; j < landComplexity; j++) {
