@@ -19,7 +19,7 @@ let property = [];
 
 let players = 200;
 
-let zoomLevel = 1 / 32;
+let zoomLevel = 1 / 8;
 
 let zoomLayers = 32;
 
@@ -87,7 +87,7 @@ window.onmousewheel = function(e) {
 		}
 	}
 	
-	if (delta < 0 && zoomLevel > 1 / 64) {
+	if (delta < 0 && zoomLevel > 1 / 8) {
 		zoomLevel /= Math.abs(delta);
 		
 		for (let i = 0; i < landPoints.length; i++) {
