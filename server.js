@@ -120,7 +120,7 @@ for (let i = 0; i < continents; i++) {
 const landSize = 0.005;
 
 for (let i = 0; i < continents; i++) {
-    for (let j = 0; j < landComplexity; j++) {
+    for (let j = 0; j < landComplexity * 100; j++) {
         generateLand(i, j);
     }
 }
