@@ -25,6 +25,9 @@ let idList = [];
 let continents = 1;
 let players = 200;
 
+function sortNearest(arr) {
+}
+
 io.on('connection', function(socket) {
     userID = socket.handshake.address;
     userID = userID.replace(/::ffff:/gi, "").replace(/\./gi, "");
