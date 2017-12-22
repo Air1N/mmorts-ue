@@ -13,7 +13,7 @@ let lmy = 0;
 
 let userID = null;
 
-let landComplexity = 10000;
+let landComplexity = 300000;
 
 let property = [];
 
@@ -21,7 +21,7 @@ let players = 200;
 
 let zoomLevel = 1;
 
-const landSize = 1;
+const landSize = 0.03;
 
 window.onmousedown = function(e) {
 	mouseDown = true;
