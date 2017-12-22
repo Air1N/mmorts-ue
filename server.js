@@ -62,8 +62,8 @@ function generateLand(k, f) {
     let biasy = 0;
 
     if (f >= landComplexity - landComplexity / 10) {
-        biasx = Math.round((landPoints[k][0].x - currentx) / (landComplexity - f)) * landSize;
-        biasy = Math.round((landPoints[k][0].y - currenty) / (landComplexity - f)) * landSize;
+        biasx = Math.round((landPoints[k][0].x - currentx) / (landComplexity - f));
+        biasy = Math.round((landPoints[k][0].y - currenty) / (landComplexity - f));
         
         console.log(biasx);
         console.log(biasy);
