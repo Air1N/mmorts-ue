@@ -142,5 +142,5 @@ for (let mm = 0; mm < continents; mm++) {
         generateLand(mm, j);
     }
     
-    enhanceLand(mm);
+    //enhanceLand(mm);
 }
