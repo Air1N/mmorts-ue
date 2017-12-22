@@ -129,10 +129,10 @@ for (let i = 0; i < continents; i++) {
 
 const landSize = 1;
 
-for (let i = 0; i < continents; i++) {
+for (let mm = 0; mm < continents; mm++) {
     for (let j = 0; j < landComplexity * initialSize; j++) {
-        generateLand(i, j);
+        generateLand(mm, j);
     }
     
-    enhanceLand(i);
+    enhanceLand(mm);
 }
