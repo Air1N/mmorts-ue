@@ -112,8 +112,8 @@ function generateProperty(k) {
 
 for (let i = 0; i < continents; i++) {
     landPoints.push([{
-        x: Math.random() * 1920,
-        y: Math.random() * 1080
+        x: 1920 / 2,
+        y: 1080 / 2
     }]);
 }
 
