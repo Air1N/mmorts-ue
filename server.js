@@ -84,8 +84,8 @@ function enhanceLand(k) {
     for (let i = 0; i < landPoints[k].length - 1; i += 9) {
         for (let j = 0; j < 8; j++) {
             landPoints[k].splice(i + 1 + j, 0, {
-                x: landPoints[k][i].x + ((landPoints[k][i + 1 + j].x - landPoints[k][i].x) / 10) * (j + 1), 
-                y: landPoints[k][i].y + ((landPoints[k][i + 1 + j].y - landPoints[k][i].y) / 10) * (j + 1)
+                x: landPoints[k][i].x + ((landPoints[k][i + 1 + j].x - landPoints[k][i].x) / 10) * (j + 1) + (Math.random() * 2 - 1) * landSize / 2, 
+                y: landPoints[k][i].y + ((landPoints[k][i + 1 + j].y - landPoints[k][i].y) / 10) * (j + 1) + (Math.random() * 2 - 1) * landSize / 2
             });
         }
     }
