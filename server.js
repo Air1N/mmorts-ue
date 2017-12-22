@@ -14,7 +14,7 @@ let userID = 0;
 
 let clientID = 0;
 
-let landComplexity = 1000;
+let landComplexity = 100000;
 
 let landPoints = [];
 
@@ -62,8 +62,8 @@ function generateLand(k, f) {
     let biasy = 0;
 
     if (f >= landComplexity - landComplexity / 10) {
-        biasx = (landPoints[k][0].x - currentx) / (landComplexity - f);
-        biasy = (landPoints[k][0].y - currenty) / (landComplexity - f);
+        biasx = Math.round((landPoints[k][0].x - currentx) / (landComplexity - f + 50));
+        biasy = Math.round((landPoints[k][0].y - currenty) / (landComplexity - f + 50));
     } else {
         for (let i = 0; i < landPoints[k].length; i++) {
             if (landPoints[k][i].x == currentx + randomx && landPoints[k][i].y == currenty + randomy) {
@@ -117,7 +117,7 @@ for (let i = 0; i < continents; i++) {
     }]);
 }
 
-const landSize = 0.005;
+const landSize = 10;
 
 for (let i = 0; i < continents; i++) {
     for (let j = 0; j < landComplexity; j++) {
