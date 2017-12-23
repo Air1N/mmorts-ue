@@ -81,7 +81,7 @@ function generateLand(k, f) {
 }
 
 function enhanceLand(k) {
-    for (let j = 1; j < 6; j++) {
+    for (let j = 1; j < 16; j *= 2) {
     for (let i = 0; i < landPoints[k].length - 1; i += 1 + j) {
         
         for (let v = 0; v < j; v++) {
