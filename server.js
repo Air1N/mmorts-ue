@@ -4,6 +4,8 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var port = process.env.PORT || 80;
 var fs = require('fs');
+
+var landUnparsed;
 app.use('/scripts', express.static(__dirname + '/scripts'));
 app.use('/', express.static(__dirname + '/'));
 app.get('/', function(req, res) {
@@ -16,6 +18,8 @@ function loadLand() {
       console.log(err);
     }
     
+    landUnparsed = data;
+      
     landPoints = JSON.parse(data);
   });
 }
@@ -59,6 +63,7 @@ io.on('connection', function(socket) {
     }
 
     io.emit('initValues', {
+        landPoints: landUnparsed,
         property: property,
         continents: continents,
         landSize: landSize,
