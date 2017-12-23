@@ -74,8 +74,8 @@ http.listen(port, function() {
 });
 
 function generateLand(k, f) {
-    let randomx = landSize * Math.round(Math.random() * 8 - 4) / 4;
-    let randomy = landSize * Math.round(Math.random() * 8 - 4) / 4;
+    let randomx = Math.round((landSize * Math.round(Math.random() * 8 - 4) / 4) * 100) / 100;
+    let randomy = Math.round((landSize * Math.round(Math.random() * 8 - 4) / 4) * 100) / 100;
 
     let currentx = landPoints[k][landPoints[k].length - 1].x;
     let currenty = landPoints[k][landPoints[k].length - 1].y;
@@ -84,8 +84,8 @@ function generateLand(k, f) {
     let biasy = 0;
 
     if (f >= landComplexity * initialSize - landComplexity * initialSize / 10) {
-        biasx = (landPoints[k][0].x - currentx) / (landComplexity * initialSize - f);
-        biasy = (landPoints[k][0].y - currenty) / (landComplexity * initialSize - f);
+        biasx = Math.round((landPoints[k][0].x - currentx) / (landComplexity * initialSize - f) * 100) / 100;
+        biasy = Math.round((landPoints[k][0].y - currenty) / (landComplexity * initialSize - f) * 100) / 100;
     } else {
         for (let i = 0; i < landPoints[k].length; i++) {
             if (landPoints[k][i].x == currentx + randomx && landPoints[k][i].y == currenty + randomy) {
@@ -104,8 +104,8 @@ function enhanceLand(k) {
     for (let j = 1; j < 10; j++) {
         for (let i = 0; i < landPoints[k].length - 1; i += 2) {
             landPoints[k].splice(i + 1, 0, {
-                x: landPoints[k][i].x + ((landPoints[k][i + 1].x - landPoints[k][i].x) / 2) + (Math.random() * 2 - 1) * landSize / (j * j) * 2, 
-                y: landPoints[k][i].y + ((landPoints[k][i + 1].y - landPoints[k][i].y) / 2) + (Math.random() * 2 - 1) * landSize / (j * j) * 2
+                x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1].x - landPoints[k][i].x) / 2) + (Math.random() * 2 - 1) * landSize / (j * j) * 2) * 100) / 100, 
+                y: Math.round((landPoints[k][i].y + ((landPoints[k][i + 1].y - landPoints[k][i].y) / 2) + (Math.random() * 2 - 1) * landSize / (j * j) * 2) * 100) / 100
             });
         }
         
