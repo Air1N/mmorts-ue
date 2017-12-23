@@ -50,7 +50,7 @@ function render() {
 }
 
 socket.on('initValues', function(data) {
-    landPoints = data.landPoints;
+    landPoints = JSON.parse(data.landPoints);
     property = data.property;
     continents = data.continents;
     players = data.players;
