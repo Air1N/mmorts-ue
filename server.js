@@ -88,7 +88,7 @@ function enhanceLand(k) {
                 y: landPoints[k][i].y + ((landPoints[k][i + 1].y - landPoints[k][i].y) / 2) + (Math.random() * 2 - 1) * landSize / (j * j)
             });
             
-            if (i % 100 == 0) console.log('enhance layer ' + i / 100 + '/' + (landPoints[k].length - i) / 100);
+            if (i % 100 == 0) console.log('enhance layer ' + i / 100 + '/' + (landPoints[k].length - i / 50) / 100);
         }
         
         console.log('enhance step ' + j + '/10');
