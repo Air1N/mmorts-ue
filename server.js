@@ -10,6 +10,26 @@ app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
 });
 
+function loadLand() {
+  fs.readFile(__dirname + '/assets/landPoints.txt', 'utf8', function(err, data){
+    if(err){
+      console.log(err);
+    }
+    
+    landPoints = JSON.parse(data);
+  });
+}
+
+function saveLand() {
+  fs.writeFile(__dirname + '/assets/landPoints.txt', JSON.stringify(landPoints), function(err) {
+        if(err) {
+          return console.log(err);
+        }
+
+        console.log("The file was saved!");
+      });
+}
+
 let userID = 0;
 
 let clientID = 0;
@@ -153,7 +173,9 @@ for (let i = 0; i < continents; i++) {
 }
 
 const landSize = 1;
+loadLand();
 
+if (landPoints[0].length < 100) {
 for (let mm = 0; mm < continents; mm++) {
     console.log('generating continent ' + (mm + 1));
     
@@ -165,6 +187,9 @@ for (let mm = 0; mm < continents; mm++) {
     
     console.log('enhancing continent ' + (mm + 1));
     enhanceLand(mm);
+}
+    
+saveLand();
 }
 
 console.log('done');
