@@ -89,7 +89,7 @@ function enhanceLand(k) {
             });
         }
         
-        console.log('enhance step ' + j + '/25');
+        console.log('enhance step ' + j + '/10');
     }
 }
 
