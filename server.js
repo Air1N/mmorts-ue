@@ -59,7 +59,6 @@ io.on('connection', function(socket) {
     }
 
     io.emit('initValues', {
-        landPoints: landPoints,
         property: property,
         continents: continents,
         landSize: landSize,
@@ -74,8 +73,8 @@ http.listen(port, function() {
 });
 
 function generateLand(k, f) {
-    let randomx = Math.round(landSize * Math.round(Math.random() * 2 - 1) * 100) / 100;
-    let randomy = Math.round(landSize * Math.round(Math.random() * 2 - 1) * 100) / 100;
+    let randomx = Math.round(landSize * Math.round(Math.random() * 2 - 1) * 10000) / 10000;
+    let randomy = Math.round(landSize * Math.round(Math.random() * 2 - 1) * 10000) / 10000;
 
     let currentx = landPoints[k][landPoints[k].length - 1].x;
     let currenty = landPoints[k][landPoints[k].length - 1].y;
@@ -84,8 +83,8 @@ function generateLand(k, f) {
     let biasy = 0;
 
     if (f >= landComplexity * initialSize - landComplexity * initialSize / 10) {
-        biasx = Math.round((landPoints[k][0].x - currentx) / (landComplexity * initialSize - f) * 100) / 100;
-        biasy = Math.round((landPoints[k][0].y - currenty) / (landComplexity * initialSize - f) * 100) / 100;
+        biasx = Math.round((landPoints[k][0].x - currentx) / (landComplexity * initialSize - f) * 10000) / 10000;
+        biasy = Math.round((landPoints[k][0].y - currenty) / (landComplexity * initialSize - f) * 10000) / 10000;
     } else {
         for (let i = 0; i < landPoints[k].length; i++) {
             if (landPoints[k][i].x == currentx + randomx && landPoints[k][i].y == currenty + randomy) {
@@ -104,8 +103,8 @@ function enhanceLand(k) {
     for (let j = 1; j < 10; j++) {
         for (let i = 0; i < landPoints[k].length - 1; i += 2) {
             landPoints[k].splice(i + 1, 0, {
-                x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1].x - landPoints[k][i].x) / 2) + (Math.random() * 2 - 1) * landSize / (j * j) * 2) * 100) / 100, 
-                y: Math.round((landPoints[k][i].y + ((landPoints[k][i + 1].y - landPoints[k][i].y) / 2) + (Math.random() * 2 - 1) * landSize / (j * j) * 2) * 100) / 100
+                x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1].x - landPoints[k][i].x) / 2) + (Math.random() * 2 - 1) * landSize / (j * j) * 2) * 10000) / 10000, 
+                y: Math.round((landPoints[k][i].y + ((landPoints[k][i + 1].y - landPoints[k][i].y) / 2) + (Math.random() * 2 - 1) * landSize / (j * j) * 2) * 10000) / 10000
             });
         }
         
@@ -117,8 +116,8 @@ function enhanceLand(k) {
     for (let i = 0; i < landPoints[k].length - 1; i += 6) {
         for (let j = 0; j < 5; j++) {
             landPoints[k].splice(i + 1 + j, 0, {
-                x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1 + j].x - landPoints[k][i].x) / 7) * (j + 1) + (Math.random() * 2 - 1) * landSize / 100 / 5) * 100) / 100, 
-                y: Math.round((landPoints[k][i].y + ((landPoints[k][i + 1 + j].y - landPoints[k][i].y) / 7) * (j + 1) + (Math.random() * 2 - 1) * landSize / 100 / 5) * 100) / 100
+                x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1 + j].x - landPoints[k][i].x) / 7) * (j + 1) + (Math.random() * 2 - 1) * landSize / 100 / 5) * 10000) / 10000, 
+                y: Math.round((landPoints[k][i].y + ((landPoints[k][i + 1 + j].y - landPoints[k][i].y) / 7) * (j + 1) + (Math.random() * 2 - 1) * landSize / 100 / 5) * 10000) / 10000
             });
         }
     }
