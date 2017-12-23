@@ -88,6 +88,8 @@ function enhanceLand(k) {
                 y: landPoints[k][i].y + ((landPoints[k][i + 1].y - landPoints[k][i].y) / 2) + (Math.random() * 2 - 1) * landSize / j / 2
             });
         }
+        
+        console.log('enhance step ' + j + '/25');
     }
 }
 
@@ -136,7 +138,7 @@ for (let mm = 0; mm < continents; mm++) {
     
     for (let j = 0; j < landComplexity * initialSize; j++) {
         generateLand(mm, j);
-        console.log('step ' + j + '/' + landComplexity * initialSize);
+        console.log('step ' + j + '/' + (landComplexity * initialSize));
     }
     
     
