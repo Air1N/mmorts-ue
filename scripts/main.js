@@ -21,7 +21,7 @@ function render() {
         ctx.moveTo(landPoints[i][0].x, landPoints[i][0].y);
         
         for (j = 1; j < landPoints[i].length - Math.max(Math.round(zoomLayers / zoomLevel), 1) - 1; j += Math.max(Math.round(zoomLayers / zoomLevel), 1)) {
-            if (landPoints[i][j].x < 0 - 150 * zoomLevel || landPoints[i][j].x > display.width + 150 * zoomLevel) {
+            /*if (landPoints[i][j].x < 0 - 150 * zoomLevel || landPoints[i][j].x > display.width + 150 * zoomLevel) {
                 j++;
                 continue;
             }
@@ -29,7 +29,7 @@ function render() {
             if (landPoints[i][j].y < 0 - 150 * zoomLevel || landPoints[i][j].y > display.height + 150 * zoomLevel) {
                 j++;
                 continue;
-            }
+            }*/
             
             var xc = (landPoints[i][j].x + landPoints[i][j + Math.max(Math.round(zoomLayers / zoomLevel), 1)].x) / 2;
             var yc = (landPoints[i][j].y + landPoints[i][j + Math.max(Math.round(zoomLayers / zoomLevel), 1)].y) / 2;
