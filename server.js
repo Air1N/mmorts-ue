@@ -142,3 +142,5 @@ for (let mm = 0; mm < continents; mm++) {
     
     enhanceLand(mm);
 }
+
+console.log('done');
