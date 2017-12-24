@@ -5,7 +5,6 @@ var io = require('socket.io')(http);
 var port = process.env.PORT || 80;
 var fs = require('fs');
 
-var landUnparsed;
 var landVersion = 1;
 app.use('/scripts', express.static(__dirname + '/scripts'));
 app.use('/', express.static(__dirname + '/'));
@@ -18,9 +17,7 @@ function loadLand() {
     if(err){
       console.log(err);
     }
-    
-    landUnparsed = data;
-      
+
     landPoints = JSON.parse(data);
   });
 }
@@ -123,39 +120,6 @@ function enhanceLand(k) {
         landSize: landSize,
         players: players
     });
-    /*
-    console.log('final enhance');
-    console.log('step 1/3');
-    for (let i = 0; i < landPoints[k].length - 1; i += 3) {
-        for (let j = 0; j < 2; j++) {
-            landPoints[k].splice(i + 1 + j, 0, {
-                x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1 + j].x - landPoints[k][i].x) / 3) * (j + 1) + (Math.random() * 2 - 1) * landSize / 200) * 10000) / 10000, 
-                y: Math.round((landPoints[k][i].y + ((landPoints[k][i + 1 + j].y - landPoints[k][i].y) / 3) * (j + 1) + (Math.random() * 2 - 1) * landSize / 200) * 10000) / 10000
-            });
-        }
-    }
-    
-    console.log('step 2/3');
-    for (let i = 0; i < landPoints[k].length - 1; i += 6) {
-        for (let j = 0; j < 3; j++) {
-            landPoints[k].splice(i + 1 + j, 0, {
-                x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1 + j].x - landPoints[k][i].x) / 6) * (j + 1) + (Math.random() * 2 - 1) * landSize / 625) * 10000) / 10000, 
-                y: Math.round((landPoints[k][i].y + ((landPoints[k][i + 1 + j].y - landPoints[k][i].y) / 6) * (j + 1) + (Math.random() * 2 - 1) * landSize / 625) * 10000) / 10000
-            });
-        }
-    }
-    
-    console.log('step 3/3');
-    for (let i = 0; i < landPoints[k].length - 1; i += 6) {
-        for (let j = 0; j < 5; j++) {
-            landPoints[k].splice(i + 1 + j, 0, {
-                x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1 + j].x - landPoints[k][i].x) / 6) * (j + 1) + (Math.random() * 2 - 1) * landSize / 3250) * 10000) / 10000, 
-                y: Math.round((landPoints[k][i].y + ((landPoints[k][i + 1 + j].y - landPoints[k][i].y) / 6) * (j + 1) + (Math.random() * 2 - 1) * landSize / 3250) * 10000) / 10000
-            });
-        }
-    }
-    */
-    //console.log('done enhancing');
     
     saveLand();
 }
@@ -199,9 +163,7 @@ for (let i = 0; i < continents; i++) {
 }
 
 const landSize = 40;
-loadLand();
 
-if (landPoints[0].length < 100) {
 for (let mm = 0; mm < continents; mm++) {
     console.log('generating continent ' + (mm + 1));
     
@@ -210,13 +172,9 @@ for (let mm = 0; mm < continents; mm++) {
         console.log('step ' + j + '/' + (landComplexity * initialSize));
     }
     
-    /*
-    console.log('enhancing continent ' + (mm + 1));
-    enhanceLand(mm);
-    */
+    setInterval(enhanceLand, 500, mm);
 }
     
-setInterval(enhanceLand, 500, 0);
-}
+    
 
 console.log('done');
