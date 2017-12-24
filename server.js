@@ -156,6 +156,8 @@ function enhanceLand(k) {
     }
     */
     //console.log('done enhancing');
+    
+    saveLand();
 }
 
 function generateProperty(k) {
@@ -215,8 +217,6 @@ for (let mm = 0; mm < continents; mm++) {
 }
     
 setInterval(enhanceLand, 500, 0);
-    
-saveLand();
 }
 
 console.log('done');
