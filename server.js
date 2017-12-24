@@ -105,7 +105,7 @@ function generateLand(k, f) {
 }
 
 function enhanceLand(k) {
-    for (let j = 1; j < 9; j++) {
+    for (let j = 1; j < 6; j++) {
         for (let i = 0; i < landPoints[k].length - 1; i += 2) {
             landPoints[k].splice(i + 1, 0, {
                 x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1].x - landPoints[k][i].x) / 2) + (Math.random() * 2 - 1) * landSize / Math.pow(2, (j + 1)/2)) * 10000) / 10000, 
@@ -113,7 +113,7 @@ function enhanceLand(k) {
             });
         }
         
-        console.log('enhance step ' + j + '/8');
+        console.log('enhance step ' + j + '/5');
     }
     
     console.log('final enhance');
