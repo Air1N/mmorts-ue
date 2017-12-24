@@ -162,7 +162,7 @@ for (let i = 0; i < continents; i++) {
     }]);
 }
 
-const landSize = 500;
+const landSize = 5000;
 
 for (let mm = 0; mm < continents; mm++) {
     console.log('generating continent ' + (mm + 1));
@@ -172,7 +172,7 @@ for (let mm = 0; mm < continents; mm++) {
         console.log('step ' + j + '/' + (landComplexity * initialSize));
     }
     
-    setInterval(enhanceLand, 5000, mm);
+    setInterval(enhanceLand, 500, mm);
 }
     
     
