@@ -106,20 +106,22 @@ function generateLand(k, f) {
 }
 
 function enhanceLand(k) {
-    count += 2;
+    for (let i = 0; i < 10; i++) {
+        count += 2;
     
-    if (count > landPoints[k].length - 2) {
-        count = 0;
-        console.log('enhance step ' + landVersion);
-        landVersion++;
+        if (count > landPoints[k].length - 2) {
+            count = 0;
+            console.log('enhance step ' + landVersion);
+            landVersion++;
         
-        saveLand();
-    }
+            saveLand();
+        }
     
-    landPoints[k].splice(count + 1, 0, {
-        x: Math.round((landPoints[k][count].x + ((landPoints[k][count + 1].x - landPoints[k][count].x) / 2) + Math.round((Math.random() * 2 - 1)) * landSize / Math.pow(2, (landVersion + 1) / 1.3)) * 100) / 100,
-        y: Math.round((landPoints[k][count].y + ((landPoints[k][count + 1].y - landPoints[k][count].y) / 2) + Math.round((Math.random() * 2 - 1)) * landSize / Math.pow(2, (landVersion + 1) / 1.3)) * 100) / 100
-    });
+        landPoints[k].splice(count + 1, 0, {
+            x: Math.round((landPoints[k][count].x + ((landPoints[k][count + 1].x - landPoints[k][count].x) / 2) + Math.round((Math.random() * 2 - 1)) * landSize / Math.pow(2, (landVersion + 1) / 1.3)) * 100) / 100,
+            y: Math.round((landPoints[k][count].y + ((landPoints[k][count + 1].y - landPoints[k][count].y) / 2) + Math.round((Math.random() * 2 - 1)) * landSize / Math.pow(2, (landVersion + 1) / 1.3)) * 100) / 100
+        });
+    }
 
     io.emit('initValues', {
         landPoints: JSON.stringify(landPoints),
