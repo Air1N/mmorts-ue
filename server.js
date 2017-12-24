@@ -94,11 +94,11 @@ function generateLand(k, f) {
 function enhanceLand(k) {
 for (let i = 0; i < 10; i++) {
     for (let count = 0; count < landPoints[k].length - 1; count += 2) {
-	if (landPoints[k][count].x < 0 || landPoints[k][count].x > display.width) {
+	if (landPoints[k][count].x < 0 || landPoints[k][count].x > 1920) {
 		continue;
 	}
 	    
-	if (landPoints[k][count].y < 0 || landPoints[k][count].y > display.height) {
+	if (landPoints[k][count].y < 0 || landPoints[k][count].y > 1080) {
 		continue;
 	}
 	
