@@ -112,6 +112,8 @@ function enhanceLand(k) {
         count = 0;
         console.log('enhance step ' + landVersion);
         landVersion++;
+        
+        saveLand();
     }
     
     landPoints[k].splice(count + 1, 0, {
@@ -126,8 +128,6 @@ function enhanceLand(k) {
         landSize: landSize,
         players: players
     });
-
-    saveLand();
 }
 
 function generateProperty(k) {
