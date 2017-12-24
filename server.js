@@ -13,24 +13,10 @@ app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
 });
 
-function loadLand() {
-    fs.readFile(__dirname + '/assets/landPoints.txt', 'utf8', function(err, data) {
-        if (err) {
-            console.log(err);
-        }
-
-        landPoints = JSON.parse(data);
-    });
-}
-
-function saveLand() {
-    fs.writeFile(__dirname + '/assets/landPoints.txt', JSON.stringify(landPoints), function(err) {
-        if (err) {
-            return console.log(err);
-        }
-
-        console.log("The file was saved!");
-    });
+function seededNoise() {
+	let date = new Date();
+	grv++;
+	return (Math.abs(Math.sin(seed) + seed * grv * Math.tan(grv) * Math.cos(grv) / Math.cos(seed / 5) + Math.tan(seed))) % 1;
 }
 
 let userID = 0;
@@ -62,7 +48,7 @@ io.on('connection', function(socket) {
     }
 
     io.emit('initValues', {
-        landPoints: "[]",
+        landPoints: landPoints,
         property: property,
         continents: continents,
         landSize: landSize,
@@ -106,24 +92,14 @@ function generateLand(k, f) {
 }
 
 function enhanceLand(k) {
-    if (landVersion > 10) return;
-    
-    for (let i = 0; i < 10000; i++) {
-        count += 2;
-    
-        if (count > landPoints[k].length - 2) {
-            count = 0;
-            console.log('enhance step ' + landVersion);
-            landVersion++;
-            
-            saveLand();
-        }
-    
+    for (let count = 0; count < landPoints[k].length - 1; count += 2) {
         landPoints[k].splice(count + 1, 0, {
             x: Math.round((landPoints[k][count].x + ((landPoints[k][count + 1].x - landPoints[k][count].x) / 2) + Math.round((Math.random() * 2 - 1)) * landSize / Math.pow(2, (landVersion + 1) / 1.3)) * 100) / 100,
             y: Math.round((landPoints[k][count].y + ((landPoints[k][count + 1].y - landPoints[k][count].y) / 2) + Math.round((Math.random() * 2 - 1)) * landSize / Math.pow(2, (landVersion + 1) / 1.3)) * 100) / 100
         });
     }
+    
+    landVersion++;
 
     io.emit('initValues', {
         landPoints: JSON.stringify(landPoints),
@@ -181,8 +157,6 @@ for (let mm = 0; mm < continents; mm++) {
         generateLand(mm, j);
         console.log('step ' + (j + 1) + '/' + (landComplexity * initialSize));
     }
-
-    setInterval(enhanceLand, 50, mm);
+    
+    enhanceLand(mm);
 }
-
-console.log('done');
