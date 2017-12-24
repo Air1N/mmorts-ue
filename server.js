@@ -47,7 +47,7 @@ let idList = [];
 let continents = 1;
 let players = 200;
 
-let initialSize = 10;
+let initialSize = 5;
 
 io.on('connection', function(socket) {
     userID = socket.handshake.address;
@@ -85,7 +85,7 @@ function generateLand(k, f) {
     let biasx = 0;
     let biasy = 0;
 
-    if (f >= landComplexity * initialSize - landComplexity * initialSize / 10) {
+    if (f >= landComplexity * initialSize - landComplexity * initialSize / 3) {
         biasx = Math.round((landPoints[k][0].x - currentx) / (landComplexity * initialSize - f) * 10000) / 10000;
         biasy = Math.round((landPoints[k][0].y - currenty) / (landComplexity * initialSize - f) * 10000) / 10000;
     } else {
