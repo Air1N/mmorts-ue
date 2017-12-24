@@ -42,7 +42,7 @@ function render() {
         ctx.fill();
         ctx.fillStyle = "red";
         for (j = 1; j < landPoints[i].length - Math.max(Math.round(zoomLayers / zoomLevel), 1) - 1; j += Math.max(Math.round(zoomLayers / zoomLevel), 1)) {
-            ctx.fillRect(landPoints[i][j].x - 1, landPoints[i][j].y - 1, 2, 2);
+            ctx.fillRect(landPoints[i][j].x - 5, landPoints[i][j].y - 5, 10, 10);
         }
         
     }
