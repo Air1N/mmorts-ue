@@ -39,8 +39,7 @@ function render() {
         ctx.stroke();
         ctx.fill();
     }
-
-    ctx.fillStyle = "rgba(255, 0, 0, 0.3)";
+    
     ctx.lineWidth = 3;
     for (let id in property) {
         ctx.beginPath();
@@ -49,6 +48,7 @@ function render() {
             ctx.lineTo(point.x, point.y);
         }
         ctx.closePath();
+        ctx.fillStyle = "rgba(255, 0, 0, 0.6)";
         ctx.fill();
         
         ctx.fillStyle = "rgba(255, 0, 0, 1)";
