@@ -13,10 +13,10 @@ app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
 });
 
-function seededNoise() {
-	let date = new Date();
-	grv++;
-	return (Math.abs(Math.sin(seed) + seed * grv * Math.tan(grv) * Math.cos(grv) / Math.cos(seed / 5) + Math.tan(seed))) % 1;
+let seed = 10;
+
+function seededNoise(pos, zoom) {
+	return (Math.abs(Math.sin(seed) + seed * pos * Math.tan(pos) * Math.cos(zoom) / Math.cos(seed / 5) + Math.tan(seed))) % 1;
 }
 
 let userID = 0;
@@ -63,8 +63,8 @@ http.listen(port, function() {
 });
 
 function generateLand(k, f) {
-    let randomx = Math.round(landSize * Math.round(Math.random() * 2 - 1) * 100) / 100;
-    let randomy = Math.round(landSize * Math.round(Math.random() * 2 - 1) * 100) / 100;
+    let randomx = Math.round(landSize * Math.round(seededNoise(k, f) * 2 - 1) * 100) / 100;
+    let randomy = Math.round(landSize * Math.round(seededNoise(k, f) * 2 - 1) * 100) / 100;
 
     let currentx = landPoints[k][landPoints[k].length - 1].x;
     let currenty = landPoints[k][landPoints[k].length - 1].y;
@@ -94,9 +94,17 @@ function generateLand(k, f) {
 function enhanceLand(k) {
 for (let i = 0; i < 10; i++) {
     for (let count = 0; count < landPoints[k].length - 1; count += 2) {
+	if (landPoints[k][count].x < 0 || landPoints[k][count].x > display.width) {
+		continue;
+	}
+	    
+	if (landPoints[k][count].y < 0 || landPoints[k][count].y > display.height) {
+		continue;
+	}
+	
         landPoints[k].splice(count + 1, 0, {
-            x: Math.round((landPoints[k][count].x + ((landPoints[k][count + 1].x - landPoints[k][count].x) / 2) + Math.round((Math.random() * 2 - 1)) * landSize / Math.pow(2, (landVersion + 1) / 1.3)) * 100) / 100,
-            y: Math.round((landPoints[k][count].y + ((landPoints[k][count + 1].y - landPoints[k][count].y) / 2) + Math.round((Math.random() * 2 - 1)) * landSize / Math.pow(2, (landVersion + 1) / 1.3)) * 100) / 100
+            x: Math.round((landPoints[k][count].x + ((landPoints[k][count + 1].x - landPoints[k][count].x) / 2) + Math.round((seededNoise(count, i) * 2 - 1)) * landSize / Math.pow(2, (landVersion + 1) / 1.3)) * 100) / 100,
+            y: Math.round((landPoints[k][count].y + ((landPoints[k][count + 1].y - landPoints[k][count].y) / 2) + Math.round((seededNoise(count, i) * 2 - 1)) * landSize / Math.pow(2, (landVersion + 1) / 1.3)) * 100) / 100
         });
     }
     
