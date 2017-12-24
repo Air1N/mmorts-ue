@@ -61,7 +61,7 @@ io.on('connection', function(socket) {
     }
 
     io.emit('initValues', {
-        landPoints: JSON.stringify(landPoints),
+        landPoints: "[]",
         property: property,
         continents: continents,
         landSize: landSize,
