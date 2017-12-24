@@ -44,12 +44,15 @@ function render() {
     ctx.lineWidth = 3;
     for (let id in property) {
         ctx.beginPath();
-        ctx.moveTo(property[id].x, property[id].y);
+        ctx.moveTo(property[id][0].x, property[id][0].y);
         for (let point of property[id]) {
             ctx.lineTo(point.x, point.y);
         }
         ctx.closePath();
         ctx.fill();
+        
+        ctx.fillStyle = "rgba(255, 0, 0, 1)";
+        ctx.fillRect(property[id][0].x - 5, property[id][0].y - 5, 10, 10);
     }
 }
 
