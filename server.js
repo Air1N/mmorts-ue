@@ -13,10 +13,24 @@ app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
 });
 
-function seededNoise() {
-	let date = new Date();
-	grv++;
-	return (Math.abs(Math.sin(seed) + seed * grv * Math.tan(grv) * Math.cos(grv) / Math.cos(seed / 5) + Math.tan(seed))) % 1;
+function loadLand() {
+    fs.readFile(__dirname + '/assets/landPoints.txt', 'utf8', function(err, data) {
+        if (err) {
+            console.log(err);
+        }
+
+        landPoints = JSON.parse(data);
+    });
+}
+
+function saveLand() {
+    fs.writeFile(__dirname + '/assets/landPoints.txt', JSON.stringify(landPoints), function(err) {
+        if (err) {
+            return console.log(err);
+        }
+
+        console.log("The file was saved!");
+    });
 }
 
 let userID = 0;
@@ -166,3 +180,5 @@ for (let mm = 0; mm < continents; mm++) {
     
     enhanceLand(mm);
 }
+
+saveLand();
