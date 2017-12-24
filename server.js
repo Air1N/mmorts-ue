@@ -105,7 +105,7 @@ function generateLand(k, f) {
 }
 
 function enhanceLand(k) {
-    for (let j = 1; j < 12; j++) {
+    for (let j = 1; j < 9; j++) {
         for (let i = 0; i < landPoints[k].length - 1; i += 2) {
             landPoints[k].splice(i + 1, 0, {
                 x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1].x - landPoints[k][i].x) / 2) + (Math.random() * 2 - 1) * landSize / Math.pow(2, (j + 1)/2)) * 10000) / 10000, 
@@ -113,7 +113,7 @@ function enhanceLand(k) {
             });
         }
         
-        console.log('enhance step ' + j + '/11');
+        console.log('enhance step ' + j + '/8');
     }
     
     console.log('final enhance');
@@ -121,8 +121,17 @@ function enhanceLand(k) {
     for (let i = 0; i < landPoints[k].length - 1; i += 6) {
         for (let j = 0; j < 5; j++) {
             landPoints[k].splice(i + 1 + j, 0, {
-                x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1 + j].x - landPoints[k][i].x) / 7) * (j + 1) + (Math.random() * 2 - 1) * landSize / 375) * 10000) / 10000, 
-                y: Math.round((landPoints[k][i].y + ((landPoints[k][i + 1 + j].y - landPoints[k][i].y) / 7) * (j + 1) + (Math.random() * 2 - 1) * landSize / 375) * 10000) / 10000
+                x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1 + j].x - landPoints[k][i].x) / 7) * (j + 1) + (Math.random() * 2 - 1) * landSize / 100) * 10000) / 10000, 
+                y: Math.round((landPoints[k][i].y + ((landPoints[k][i + 1 + j].y - landPoints[k][i].y) / 7) * (j + 1) + (Math.random() * 2 - 1) * landSize / 100) * 10000) / 10000
+            });
+        }
+    }
+    
+    for (let i = 0; i < landPoints[k].length - 1; i += 6) {
+        for (let j = 0; j < 5; j++) {
+            landPoints[k].splice(i + 1 + j, 0, {
+                x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1 + j].x - landPoints[k][i].x) / 7) * (j + 1) + (Math.random() * 2 - 1) * landSize / 520) * 10000) / 10000, 
+                y: Math.round((landPoints[k][i].y + ((landPoints[k][i + 1 + j].y - landPoints[k][i].y) / 7) * (j + 1) + (Math.random() * 2 - 1) * landSize / 520) * 10000) / 10000
             });
         }
     }
