@@ -21,7 +21,7 @@ let players = 200;
 
 let zoomLevel = 1 / 128;
 
-let zoomLayers = 32;
+let zoomLayers = 256;
 
 const landSize = 0.005;
 
@@ -62,7 +62,7 @@ window.onmousewheel = function(e) {
 	mousex = (e.clientX - display.getBoundingClientRect().left) * (display.width / display.clientWidth);
 	mousey = (e.clientY - display.getBoundingClientRect().top) * (display.height / display.clientHeight);
 
-	if (delta > 0 && zoomLevel < 1000) {
+	if (delta > 0 && zoomLevel < 256) {
 		zoomLevel *= delta;
 		
 		for (let i = 0; i < landPoints.length; i++) {
@@ -87,7 +87,7 @@ window.onmousewheel = function(e) {
 		}
 	}
 	
-	if (delta < 0 && zoomLevel > 0) {
+	if (delta < 0 && zoomLevel > 1 / 128) {
 		zoomLevel /= Math.abs(delta);
 		
 		for (let i = 0; i < landPoints.length; i++) {
