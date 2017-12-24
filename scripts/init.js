@@ -19,9 +19,9 @@ let property = [];
 
 let players = 200;
 
-let zoomLevel = 1 / 128;
+let zoomLevel = 1;
 
-let zoomLayers = 1 / 1000;
+let zoomLayers = 1;
 
 const landSize = 0.005;
 
