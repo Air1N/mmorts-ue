@@ -47,7 +47,7 @@ let idList = [];
 let continents = 1;
 let players = 200;
 
-let initialSize = 25;
+let initialSize = 10;
 
 io.on('connection', function(socket) {
     userID = socket.handshake.address;
@@ -86,8 +86,8 @@ function generateLand(k, f) {
     let biasy = 0;
 
     if (f >= landComplexity * initialSize - landComplexity * initialSize / 3) {
-        biasx = Math.round((landPoints[k][0].x - currentx) / (landComplexity * initialSize - f) * 10000) / 10000;
-        biasy = Math.round((landPoints[k][0].y - currenty) / (landComplexity * initialSize - f) * 10000) / 10000;
+        biasx = Math.round((landPoints[k][0].x - currentx) / (landComplexity * initialSize / 3) * 10000) / 10000;
+        biasy = Math.round((landPoints[k][0].y - currenty) / (landComplexity * initialSize / 3) * 10000) / 10000;
     } else {
         for (let i = 0; i < landPoints[k].length; i++) {
             if (landPoints[k][i].x == currentx + randomx && landPoints[k][i].y == currenty + randomy) {
@@ -106,8 +106,8 @@ function enhanceLand(k) {
     console.log('enhance step ' + landVersion);
     for (let i = 0; i < landPoints[k].length - 1; i += 2) {
             landPoints[k].splice(i + 1, 0, {
-                x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1].x - landPoints[k][i].x) / 2) + (Math.random() * 2 - 1) * landSize / Math.pow(2, (landVersion + 1) / 1.65)) * 10000) / 10000, 
-                y: Math.round((landPoints[k][i].y + ((landPoints[k][i + 1].y - landPoints[k][i].y) / 2) + (Math.random() * 2 - 1) * landSize / Math.pow(2, (landVersion + 1) / 1.65)) * 10000) / 10000
+                x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1].x - landPoints[k][i].x) / 2) + (Math.random() * 2 - 1) * landSize / Math.pow(2, (landVersion + 1) / 1.6)) * 10000) / 10000, 
+                y: Math.round((landPoints[k][i].y + ((landPoints[k][i + 1].y - landPoints[k][i].y) / 2) + (Math.random() * 2 - 1) * landSize / Math.pow(2, (landVersion + 1) / 1.6)) * 10000) / 10000
             });
     }
     
