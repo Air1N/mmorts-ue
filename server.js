@@ -117,7 +117,7 @@ function enhanceLand(k) {
     }
     
     console.log('final enhance');
-    
+    console.log('step 1/3');
     for (let i = 0; i < landPoints[k].length - 1; i += 6) {
         for (let j = 0; j < 5; j++) {
             landPoints[k].splice(i + 1 + j, 0, {
@@ -127,6 +127,7 @@ function enhanceLand(k) {
         }
     }
     
+    console.log('step 2/3');
     for (let i = 0; i < landPoints[k].length - 1; i += 6) {
         for (let j = 0; j < 5; j++) {
             landPoints[k].splice(i + 1 + j, 0, {
@@ -136,6 +137,7 @@ function enhanceLand(k) {
         }
     }
     
+    console.log('step 3/3');
     for (let i = 0; i < landPoints[k].length - 1; i += 6) {
         for (let j = 0; j < 5; j++) {
             landPoints[k].splice(i + 1 + j, 0, {
