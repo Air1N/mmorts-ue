@@ -172,7 +172,7 @@ for (let mm = 0; mm < continents; mm++) {
         console.log('step ' + j + '/' + (landComplexity * initialSize));
     }
     
-    setInterval(enhanceLand, 500, mm);
+    setInterval(enhanceLand, 5000, mm);
 }
     
     
