@@ -76,8 +76,8 @@ http.listen(port, function() {
 });
 
 function generateLand(k, f) {
-    let randomx = Math.round(landSize * Math.round(Math.random() * 2 - 1) * 10) / 10;
-    let randomy = Math.round(landSize * Math.round(Math.random() * 2 - 1) * 10) / 10;
+    let randomx = Math.round(landSize * Math.round(Math.random() * 2 - 1));
+    let randomy = Math.round(landSize * Math.round(Math.random() * 2 - 1));
 
     let currentx = landPoints[k][landPoints[k].length - 1].x;
     let currenty = landPoints[k][landPoints[k].length - 1].y;
@@ -108,8 +108,8 @@ function enhanceLand(k) {
     console.log('enhance step ' + landVersion);
     for (let i = 0; i < landPoints[k].length - 1; i += 2) {
         landPoints[k].splice(i + 1, 0, {
-            x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1].x - landPoints[k][i].x) / 2) + Math.round((Math.random() * 2 - 1)) * landSize / Math.pow(2, (landVersion + 1) / 1.3)) * 10) / 10,
-            y: Math.round((landPoints[k][i].y + ((landPoints[k][i + 1].y - landPoints[k][i].y) / 2) + Math.round((Math.random() * 2 - 1)) * landSize / Math.pow(2, (landVersion + 1) / 1.3)) * 10) / 10
+            x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1].x - landPoints[k][i].x) / 2) + Math.round((Math.random() * 2 - 1)) * landSize / Math.pow(2, (landVersion + 1) / 1.3))),
+            y: Math.round((landPoints[k][i].y + ((landPoints[k][i + 1].y - landPoints[k][i].y) / 2) + Math.round((Math.random() * 2 - 1)) * landSize / Math.pow(2, (landVersion + 1) / 1.3)))
         });
     }
 
