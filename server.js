@@ -47,7 +47,7 @@ let idList = [];
 let continents = 1;
 let players = 200;
 
-let initialSize = 100;
+let initialSize = 10;
 
 io.on('connection', function(socket) {
     userID = socket.handshake.address;
