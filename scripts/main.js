@@ -30,10 +30,12 @@ function render() {
             
             var xc = (landPoints[i][j].x + landPoints[i][j + Math.max(Math.round(zoomLayers / zoomLevel), 1)].x) / 2;
             var yc = (landPoints[i][j].y + landPoints[i][j + Math.max(Math.round(zoomLayers / zoomLevel), 1)].y) / 2;
-            ctx.quadraticCurveTo(landPoints[i][j].x, landPoints[i][j].y, xc, yc);
+            //ctx.quadraticCurveTo(landPoints[i][j].x, landPoints[i][j].y, xc, yc);
+            
+            ctx.lineTo(landPoints[i][j].x, landPoints[i][j].y);
         }
 
-        ctx.quadraticCurveTo(landPoints[i][j].x, landPoints[i][j].y, landPoints[i][landPoints[i].length - 1].x, landPoints[i][landPoints[i].length - 1].y);
+        //ctx.quadraticCurveTo(landPoints[i][j].x, landPoints[i][j].y, landPoints[i][landPoints[i].length - 1].x, landPoints[i][landPoints[i].length - 1].y);
         ctx.fillStyle = "green";
         ctx.closePath();
         ctx.stroke();
