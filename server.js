@@ -196,7 +196,7 @@ for (let i = 0; i < continents; i++) {
     }]);
 }
 
-const landSize = 1;
+const landSize = 20;
 loadLand();
 
 if (landPoints[0].length < 100) {
