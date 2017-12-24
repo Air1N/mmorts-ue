@@ -121,8 +121,8 @@ function enhanceLand(k) {
     for (let i = 0; i < landPoints[k].length - 1; i += 3) {
         for (let j = 0; j < 2; j++) {
             landPoints[k].splice(i + 1 + j, 0, {
-                x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1 + j].x - landPoints[k][i].x) / 3) * (j + 1) + (Math.random() * 2 - 1) * landSize / 50) * 10000) / 10000, 
-                y: Math.round((landPoints[k][i].y + ((landPoints[k][i + 1 + j].y - landPoints[k][i].y) / 3) * (j + 1) + (Math.random() * 2 - 1) * landSize / 50) * 10000) / 10000
+                x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1 + j].x - landPoints[k][i].x) / 3) * (j + 1) + (Math.random() * 2 - 1) * landSize / 200) * 10000) / 10000, 
+                y: Math.round((landPoints[k][i].y + ((landPoints[k][i + 1 + j].y - landPoints[k][i].y) / 3) * (j + 1) + (Math.random() * 2 - 1) * landSize / 200) * 10000) / 10000
             });
         }
     }
@@ -131,8 +131,8 @@ function enhanceLand(k) {
     for (let i = 0; i < landPoints[k].length - 1; i += 6) {
         for (let j = 0; j < 3; j++) {
             landPoints[k].splice(i + 1 + j, 0, {
-                x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1 + j].x - landPoints[k][i].x) / 6) * (j + 1) + (Math.random() * 2 - 1) * landSize / 175) * 10000) / 10000, 
-                y: Math.round((landPoints[k][i].y + ((landPoints[k][i + 1 + j].y - landPoints[k][i].y) / 6) * (j + 1) + (Math.random() * 2 - 1) * landSize / 175) * 10000) / 10000
+                x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1 + j].x - landPoints[k][i].x) / 6) * (j + 1) + (Math.random() * 2 - 1) * landSize / 625) * 10000) / 10000, 
+                y: Math.round((landPoints[k][i].y + ((landPoints[k][i + 1 + j].y - landPoints[k][i].y) / 6) * (j + 1) + (Math.random() * 2 - 1) * landSize / 625) * 10000) / 10000
             });
         }
     }
@@ -141,8 +141,8 @@ function enhanceLand(k) {
     for (let i = 0; i < landPoints[k].length - 1; i += 6) {
         for (let j = 0; j < 5; j++) {
             landPoints[k].splice(i + 1 + j, 0, {
-                x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1 + j].x - landPoints[k][i].x) / 6) * (j + 1) + (Math.random() * 2 - 1) * landSize / 800) * 10000) / 10000, 
-                y: Math.round((landPoints[k][i].y + ((landPoints[k][i + 1 + j].y - landPoints[k][i].y) / 6) * (j + 1) + (Math.random() * 2 - 1) * landSize / 800) * 10000) / 10000
+                x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1 + j].x - landPoints[k][i].x) / 6) * (j + 1) + (Math.random() * 2 - 1) * landSize / 3250) * 10000) / 10000, 
+                y: Math.round((landPoints[k][i].y + ((landPoints[k][i + 1 + j].y - landPoints[k][i].y) / 6) * (j + 1) + (Math.random() * 2 - 1) * landSize / 3250) * 10000) / 10000
             });
         }
     }
