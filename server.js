@@ -85,9 +85,9 @@ function generateLand(k, f) {
     let biasx = 0;
     let biasy = 0;
 
-    if (f >= landComplexity * initialSize - landComplexity * initialSize / 3) {
-        biasx = Math.round((landPoints[k][0].x - currentx) / (landComplexity * initialSize / 2) * 10000) / 10000;
-        biasy = Math.round((landPoints[k][0].y - currenty) / (landComplexity * initialSize / 2) * 10000) / 10000;
+    if (f >= landComplexity * initialSize - 1) {
+        biasx = (landPoints[k][0].x - currentx);
+        biasy = (landPoints[k][0].y - currenty);
     } else {
         for (let i = 0; i < landPoints[k].length; i++) {
             if (landPoints[k][i].x == currentx + randomx && landPoints[k][i].y == currenty + randomy) {
