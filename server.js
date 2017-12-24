@@ -180,7 +180,7 @@ app.get('/', function(req, res) {
 });
 
 loadLand();
-
+/*
 if (landPoints[0].length < 10) {
 	for (let mm = 0; mm < continents; mm++) {
     		console.log('generating continent ' + (mm + 1));
@@ -194,4 +194,4 @@ if (landPoints[0].length < 10) {
 	}
 
 	saveLand();
-}
+}*/
