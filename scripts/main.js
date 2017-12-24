@@ -61,6 +61,15 @@ socket.on('initValues', function(data) {
     property = data.property;
     continents = data.continents;
     players = data.players;
+    
+    for (let point of landPoints[0]) {
+        point.x *= 5000;
+		point.y *= 5000;
+				
+
+		point.x -= 1920 * 5000;
+		point.y -= 1080 * 5000;
+    }
 });
 
 socket.on('id', function(uID) {
