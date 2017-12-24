@@ -92,7 +92,7 @@ function generateLand(k, f) {
 }
 
 function enhanceLand(k) {
-for (let i = 0; i < 11; i++) {
+for (let i = 0; i < 15; i++) {
     for (let count = 0; count < landPoints[k].length - 1; count += 2) {
         landPoints[k].splice(count + 1, 0, {
             x: Math.round((landPoints[k][count].x + ((landPoints[k][count + 1].x - landPoints[k][count].x) / 2) + Math.round((Math.random() * 2 - 1)) * landSize / Math.pow(2, (landVersion + 1) / 1.3)) * 100) / 100,
