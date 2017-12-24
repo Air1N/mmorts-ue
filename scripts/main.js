@@ -32,7 +32,7 @@ function render() {
             var yc = (landPoints[i][j].y + landPoints[i][j + Math.max(Math.round(zoomLayers / zoomLevel), 1)].y) / 2;
             ctx.quadraticCurveTo(landPoints[i][j].x, landPoints[i][j].y, xc, yc);
             ctx.fillStyle = "red";
-            ctx.fillRect(landPoints[i][j].x - 10, landPoints[i][j].y - 10, 20, 20);
+            ctx.fillRect(landPoints[i][j].x - 10, landPoints[i][j].y - 10, 32 * 5 / zoomLevel, 32 * 5 / zoomLevel);
         }
 
         ctx.quadraticCurveTo(landPoints[i][j].x, landPoints[i][j].y, landPoints[i][landPoints[i].length - 1].x, landPoints[i][landPoints[i].length - 1].y);
