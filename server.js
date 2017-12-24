@@ -13,23 +13,23 @@ app.get('/', function(req, res) {
 });
 
 function loadLand() {
-  fs.readFile(__dirname + '/assets/landPoints.txt', 'utf8', function(err, data){
-    if(err){
-      console.log(err);
-    }
+    fs.readFile(__dirname + '/assets/landPoints.txt', 'utf8', function(err, data) {
+        if (err) {
+            console.log(err);
+        }
 
-    landPoints = JSON.parse(data);
-  });
+        landPoints = JSON.parse(data);
+    });
 }
 
 function saveLand() {
-  fs.writeFile(__dirname + '/assets/landPoints.txt', JSON.stringify(landPoints), function(err) {
-        if(err) {
-          return console.log(err);
+    fs.writeFile(__dirname + '/assets/landPoints.txt', JSON.stringify(landPoints), function(err) {
+        if (err) {
+            return console.log(err);
         }
 
         console.log("The file was saved!");
-      });
+    });
 }
 
 let userID = 0;
@@ -52,9 +52,9 @@ let initialSize = 10;
 io.on('connection', function(socket) {
     userID = socket.handshake.address;
     userID = userID.replace(/::ffff:/gi, "").replace(/\./gi, "");
-    
+
     console.log('ID: ' + userID + ' connected.');
-    
+
     if (idList.indexOf(userID) == -1) {
         generateProperty(userID);
         idList.push(userID);
@@ -67,7 +67,7 @@ io.on('connection', function(socket) {
         landSize: landSize,
         players: players
     });
-    
+
     io.emit('id', userID);
 });
 
@@ -76,8 +76,8 @@ http.listen(port, function() {
 });
 
 function generateLand(k, f) {
-    let randomx = Math.round(landSize * Math.round(Math.random() * 2 - 1) * 10000) / 10000;
-    let randomy = Math.round(landSize * Math.round(Math.random() * 2 - 1) * 10000) / 10000;
+    let randomx = Math.round(landSize * Math.round(Math.random() * 2 - 1) * 10) / 10;
+    let randomy = Math.round(landSize * Math.round(Math.random() * 2 - 1) * 10) / 10;
 
     let currentx = landPoints[k][landPoints[k].length - 1].x;
     let currenty = landPoints[k][landPoints[k].length - 1].y;
@@ -95,7 +95,7 @@ function generateLand(k, f) {
         x: currentx + randomx,
         y: currenty + randomy
     });
-    
+
     if (f == landComplexity * initialSize - 1) {
         landPoints[k].push({
             x: landPoints[k][0].x,
@@ -107,14 +107,14 @@ function generateLand(k, f) {
 function enhanceLand(k) {
     console.log('enhance step ' + landVersion);
     for (let i = 0; i < landPoints[k].length - 1; i += 2) {
-            landPoints[k].splice(i + 1, 0, {
-                x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1].x - landPoints[k][i].x) / 2) + Math.round((Math.random() * 2 - 1)) * landSize / Math.pow(2, (landVersion + 1) / 1.3)) * 10000) / 10000, 
-                y: Math.round((landPoints[k][i].y + ((landPoints[k][i + 1].y - landPoints[k][i].y) / 2) + Math.round((Math.random() * 2 - 1)) * landSize / Math.pow(2, (landVersion + 1) / 1.3)) * 10000) / 10000
-            });
+        landPoints[k].splice(i + 1, 0, {
+            x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1].x - landPoints[k][i].x) / 2) + Math.round((Math.random() * 2 - 1)) * landSize / Math.pow(2, (landVersion + 1) / 1.3)) * 10) / 10,
+            y: Math.round((landPoints[k][i].y + ((landPoints[k][i + 1].y - landPoints[k][i].y) / 2) + Math.round((Math.random() * 2 - 1)) * landSize / Math.pow(2, (landVersion + 1) / 1.3)) * 10) / 10
+        });
     }
-    
+
     landVersion++;
-    
+
     io.emit('initValues', {
         landPoints: JSON.stringify(landPoints),
         property: property,
@@ -122,7 +122,7 @@ function enhanceLand(k) {
         landSize: landSize,
         players: players
     });
-    
+
     saveLand();
 }
 
@@ -168,15 +168,13 @@ const landSize = 60000;
 
 for (let mm = 0; mm < continents; mm++) {
     console.log('generating continent ' + (mm + 1));
-    
+
     for (let j = 0; j < landComplexity * initialSize; j++) {
         generateLand(mm, j);
         console.log('step ' + (j + 1) + '/' + (landComplexity * initialSize));
     }
-    
+
     setInterval(enhanceLand, 5000, mm);
 }
-    
-    
 
 console.log('done');
