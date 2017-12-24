@@ -92,7 +92,7 @@ function generateLand(k, f) {
 }
 
 function enhanceLand(k) {
-for (let i = 0; i < 15; i++) {
+for (let i = 0; i < 18; i++) {
     console.log(landVersion);
 	
     for (let count = 0; count < landPoints[k].length - 1; count += 2) {
