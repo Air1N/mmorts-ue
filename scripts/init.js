@@ -21,7 +21,7 @@ let players = 200;
 
 let zoomLevel = 1 / 128;
 
-let zoomLayers = 8;
+let zoomLayers = 1 / 1000;
 
 const landSize = 0.005;
 
