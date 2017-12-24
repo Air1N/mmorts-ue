@@ -16,7 +16,6 @@ function render() {
         ctx.lineJoin = "round";
         ctx.lineCap = "round";
         
-        ctx.fillStyle = "green";
         ctx.beginPath();
         ctx.moveTo(landPoints[i][0].x, landPoints[i][0].y);
         
@@ -32,12 +31,12 @@ function render() {
             var xc = (landPoints[i][j].x + landPoints[i][j + Math.max(Math.round(zoomLayers / zoomLevel), 1)].x) / 2;
             var yc = (landPoints[i][j].y + landPoints[i][j + Math.max(Math.round(zoomLayers / zoomLevel), 1)].y) / 2;
             ctx.quadraticCurveTo(landPoints[i][j].x, landPoints[i][j].y, xc, yc);
-            
+            ctx.fillStyle = "red";
             ctx.fillRect(landPoints[i][j].x - 5, landPoints[i][j].y - 5, 10, 10);
         }
 
         ctx.quadraticCurveTo(landPoints[i][j].x, landPoints[i][j].y, landPoints[i][landPoints[i].length - 1].x, landPoints[i][landPoints[i].length - 1].y);
-
+        ctx.fillStyle = "green";
         ctx.closePath();
         ctx.stroke();
         ctx.fill();
