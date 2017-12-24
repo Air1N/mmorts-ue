@@ -97,16 +97,57 @@ function generateLand(k, f) {
             }
         }
     }
-    
-    landPoints[k].push({
-        x: Math.round((currentx + ((currentx + randomx + biasx - currentx) / 2) + (Math.random() * 2 - 1) * landSize / 2) * 10000) / 10000, 
-        y: Math.round((currenty + ((currenty + randomy + biasy - currenty) / 2) + (Math.random() * 2 - 1) * landSize / 2) * 10000) / 10000
-    });
-    
+
     landPoints[k].push({
         x: currentx + randomx + biasx,
         y: currenty + randomy + biasy
     });
+}
+
+function enhanceLand(k) {
+    for (let j = 1; j < 13; j++) {
+        for (let i = 0; i < landPoints[k].length - 1; i += 2) {
+            landPoints[k].splice(i + 1, 0, {
+                x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1].x - landPoints[k][i].x) / 2) + (Math.random() * 2 - 1) * landSize / Math.pow(2, (j + 1)/2)) * 10000) / 10000, 
+                y: Math.round((landPoints[k][i].y + ((landPoints[k][i + 1].y - landPoints[k][i].y) / 2) + (Math.random() * 2 - 1) * landSize / Math.pow(2, (j + 1)/2)) * 10000) / 10000
+            });
+        }
+        
+        console.log('enhance step ' + j + '/12');
+    }
+    /*
+    console.log('final enhance');
+    console.log('step 1/3');
+    for (let i = 0; i < landPoints[k].length - 1; i += 3) {
+        for (let j = 0; j < 2; j++) {
+            landPoints[k].splice(i + 1 + j, 0, {
+                x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1 + j].x - landPoints[k][i].x) / 3) * (j + 1) + (Math.random() * 2 - 1) * landSize / 200) * 10000) / 10000, 
+                y: Math.round((landPoints[k][i].y + ((landPoints[k][i + 1 + j].y - landPoints[k][i].y) / 3) * (j + 1) + (Math.random() * 2 - 1) * landSize / 200) * 10000) / 10000
+            });
+        }
+    }
+    
+    console.log('step 2/3');
+    for (let i = 0; i < landPoints[k].length - 1; i += 6) {
+        for (let j = 0; j < 3; j++) {
+            landPoints[k].splice(i + 1 + j, 0, {
+                x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1 + j].x - landPoints[k][i].x) / 6) * (j + 1) + (Math.random() * 2 - 1) * landSize / 625) * 10000) / 10000, 
+                y: Math.round((landPoints[k][i].y + ((landPoints[k][i + 1 + j].y - landPoints[k][i].y) / 6) * (j + 1) + (Math.random() * 2 - 1) * landSize / 625) * 10000) / 10000
+            });
+        }
+    }
+    
+    console.log('step 3/3');
+    for (let i = 0; i < landPoints[k].length - 1; i += 6) {
+        for (let j = 0; j < 5; j++) {
+            landPoints[k].splice(i + 1 + j, 0, {
+                x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1 + j].x - landPoints[k][i].x) / 6) * (j + 1) + (Math.random() * 2 - 1) * landSize / 3250) * 10000) / 10000, 
+                y: Math.round((landPoints[k][i].y + ((landPoints[k][i + 1 + j].y - landPoints[k][i].y) / 6) * (j + 1) + (Math.random() * 2 - 1) * landSize / 3250) * 10000) / 10000
+            });
+        }
+    }
+    */
+    console.log('done enhancing');
 }
 
 function generateProperty(k) {
@@ -158,6 +199,10 @@ for (let mm = 0; mm < continents; mm++) {
         generateLand(mm, j);
         console.log('step ' + j + '/' + (landComplexity * initialSize));
     }
+    
+    
+    console.log('enhancing continent ' + (mm + 1));
+    enhanceLand(mm);
 }
     
 saveLand();
