@@ -106,6 +106,8 @@ function generateLand(k, f) {
 }
 
 function enhanceLand(k) {
+    if (landVersion > 10) return;
+    
     for (let i = 0; i < 10000; i++) {
         count += 2;
     
@@ -113,7 +115,7 @@ function enhanceLand(k) {
             count = 0;
             console.log('enhance step ' + landVersion);
             landVersion++;
-        
+            
             saveLand();
         }
     
