@@ -91,35 +91,6 @@ function generateLand(k, f) {
     }
 }
 
-function enhanceLand(k) {
-for (let i = 0; i < 10; i++) {
-    for (let count = 0; count < landPoints[k].length - 1; count += 2) {
-	if (landPoints[k][count].x < 0 || landPoints[k][count].x > 1920) {
-		continue;
-	}
-	    
-	if (landPoints[k][count].y < 0 || landPoints[k][count].y > 1080) {
-		continue;
-	}
-	
-        landPoints[k].splice(count + 1, 0, {
-            x: Math.round((landPoints[k][count].x + ((landPoints[k][count + 1].x - landPoints[k][count].x) / 2) + Math.round((seededNoise(count, i) * 2 - 1)) * landSize / Math.pow(2, (landVersion + 1) / 1.3)) * 100) / 100,
-            y: Math.round((landPoints[k][count].y + ((landPoints[k][count + 1].y - landPoints[k][count].y) / 2) + Math.round((seededNoise(count, i) * 2 - 1)) * landSize / Math.pow(2, (landVersion + 1) / 1.3)) * 100) / 100
-        });
-    }
-    
-    landVersion++;
-}
-
-    io.emit('initValues', {
-        landPoints: JSON.stringify(landPoints),
-        property: property,
-        continents: continents,
-        landSize: landSize,
-        players: players
-    });
-}
-
 function generateProperty(k) {
     property[k] = [];
     let continent = Math.floor(Math.random() * continents);
@@ -167,6 +138,4 @@ for (let mm = 0; mm < continents; mm++) {
         generateLand(mm, j);
         console.log('step ' + (j + 1) + '/' + (landComplexity * initialSize));
     }
-    
-    enhanceLand(mm);
 }
