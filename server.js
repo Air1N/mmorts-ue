@@ -20,6 +20,14 @@ function loadLand() {
         }
 
         landPoints = JSON.parse(data);
+	    
+	io.emit('initValues', {
+        	landPoints: data,
+        	property: property,
+        	continents: continents,
+        	landSize: landSize,
+        	players: players
+    	});
     });
 }
 
@@ -170,15 +178,19 @@ for (let i = 0; i < continents; i++) {
 
 const landSize = 5000;
 
-for (let mm = 0; mm < continents; mm++) {
-    console.log('generating continent ' + (mm + 1));
+loadLand();
 
-    for (let j = 0; j < landComplexity * initialSize; j++) {
-        generateLand(mm, j);
-        console.log('step ' + (j + 1) + '/' + (landComplexity * initialSize));
-    }
+if (landPoints[0].length < 10) {
+	for (let mm = 0; mm < continents; mm++) {
+    		console.log('generating continent ' + (mm + 1));
+
+    		for (let j = 0; j < landComplexity * initialSize; j++) {
+        		generateLand(mm, j);
+        		console.log('step ' + (j + 1) + '/' + (landComplexity * initialSize));
+    		}
     
-    enhanceLand(mm);
-}
+    		enhanceLand(mm);
+	}
 
-saveLand();
+	saveLand();
+}
