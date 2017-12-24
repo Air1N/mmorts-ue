@@ -85,21 +85,23 @@ function generateLand(k, f) {
     let biasx = 0;
     let biasy = 0;
 
-    if (f >= landComplexity * initialSize - 8) {
-        biasx = (landPoints[k][0].x - currentx) / 3;
-        biasy = (landPoints[k][0].y - currenty) / 3;
-    } else {
-        for (let i = 0; i < landPoints[k].length; i++) {
-            if (landPoints[k][i].x == currentx + randomx && landPoints[k][i].y == currenty + randomy) {
-                return;
-            }
+    for (let i = 0; i < landPoints[k].length; i++) {
+        if (landPoints[k][i].x == currentx + randomx && landPoints[k][i].y == currenty + randomy && f < 9) {
+            return;
         }
     }
 
     landPoints[k].push({
-        x: currentx + randomx + biasx,
-        y: currenty + randomy + biasy
+        x: currentx + randomx,
+        y: currenty + randomy
     });
+    
+    if (f == landComplexity * initialSize - 1) {
+        landPoints[k].push({
+            x: landPoints[k][0].x,
+            y: landPoints[k][0].y
+        });
+    }
 }
 
 function enhanceLand(k) {
