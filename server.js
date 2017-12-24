@@ -104,6 +104,8 @@ for (let i = 0; i < 15; i++) {
     
     landVersion++;
 }
+	
+	console.log('done');
 
     io.emit('initValues', {
         landPoints: JSON.stringify(landPoints),
