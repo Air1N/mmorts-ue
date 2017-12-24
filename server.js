@@ -7,14 +7,9 @@ var fs = require('fs');
 
 var landVersion = 1;
 var count = 0;
-app.use('/scripts', express.static(__dirname + '/scripts'));
-app.use('/', express.static(__dirname + '/'));
-app.get('/', function(req, res) {
-    res.sendFile(__dirname + '/index.html');
-});
 
 function loadLand() {
-    fs.readFile(__dirname + '/assets/landPoints.txt', 'utf8', function(err, data) {
+    fs.readFile(__dirname + '/assets/land.txt', 'utf8', function(err, data) {
         if (err) {
             console.log(err);
         }
@@ -32,7 +27,7 @@ function loadLand() {
 }
 
 function saveLand() {
-    fs.writeFile(__dirname + '/assets/landPoints.txt', JSON.stringify(landPoints), function(err) {
+    fs.writeFile(__dirname + '/assets/land.txt', JSON.stringify(landPoints), function(err) {
         if (err) {
             return console.log(err);
         }
@@ -177,6 +172,12 @@ for (let i = 0; i < continents; i++) {
 }
 
 const landSize = 5000;
+
+app.use('/scripts', express.static(__dirname + '/scripts'));
+app.use('/', express.static(__dirname + '/'));
+app.get('/', function(req, res) {
+    res.sendFile(__dirname + '/index.html');
+});
 
 loadLand();
 
