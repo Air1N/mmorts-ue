@@ -64,11 +64,11 @@ socket.on('initValues', function(data) {
     
     for (let point of landPoints[0]) {
         point.x *= 5000;
-		point.y *= 5000;
+	point.y *= 5000;
 				
 
-		point.x -= 1920 * 5000;
-		point.y -= 1080 * 5000;
+	point.x -= 1920 * 5000;
+	point.y -= 1080 * 5000;
     }
 });
 
