@@ -6,6 +6,7 @@ var port = process.env.PORT || 80;
 var fs = require('fs');
 
 var landUnparsed;
+var landVersion = 1;
 app.use('/scripts', express.static(__dirname + '/scripts'));
 app.use('/', express.static(__dirname + '/'));
 app.get('/', function(req, res) {
@@ -105,16 +106,15 @@ function generateLand(k, f) {
 }
 
 function enhanceLand(k) {
-    for (let j = 1; j < 13; j++) {
-        for (let i = 0; i < landPoints[k].length - 1; i += 2) {
+    console.log('enhance step ' + landVersion);
+    for (let i = 0; i < landPoints[k].length - 1; i += 2) {
             landPoints[k].splice(i + 1, 0, {
-                x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1].x - landPoints[k][i].x) / 2) + (Math.random() * 2 - 1) * landSize / Math.pow(2, (j + 1)/2)) * 10000) / 10000, 
-                y: Math.round((landPoints[k][i].y + ((landPoints[k][i + 1].y - landPoints[k][i].y) / 2) + (Math.random() * 2 - 1) * landSize / Math.pow(2, (j + 1)/2)) * 10000) / 10000
+                x: Math.round((landPoints[k][i].x + ((landPoints[k][i + 1].x - landPoints[k][i].x) / 2) + (Math.random() * 2 - 1) * landSize / Math.pow(2, (landVersion + 1)/2)) * 10000) / 10000, 
+                y: Math.round((landPoints[k][i].y + ((landPoints[k][i + 1].y - landPoints[k][i].y) / 2) + (Math.random() * 2 - 1) * landSize / Math.pow(2, (landVersion + 1)/2)) * 10000) / 10000
             });
-        }
-        
-        console.log('enhance step ' + j + '/12');
     }
+    
+    landVersion++;
     /*
     console.log('final enhance');
     console.log('step 1/3');
@@ -147,7 +147,7 @@ function enhanceLand(k) {
         }
     }
     */
-    console.log('done enhancing');
+    //console.log('done enhancing');
 }
 
 function generateProperty(k) {
@@ -200,10 +200,13 @@ for (let mm = 0; mm < continents; mm++) {
         console.log('step ' + j + '/' + (landComplexity * initialSize));
     }
     
-    
+    /*
     console.log('enhancing continent ' + (mm + 1));
     enhanceLand(mm);
+    */
 }
+    
+setInterval(enhanceLand, 5000, 0);
     
 saveLand();
 }
