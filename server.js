@@ -214,7 +214,7 @@ for (let mm = 0; mm < continents; mm++) {
     */
 }
     
-setInterval(enhanceLand, 5000, 0);
+setInterval(enhanceLand, 500, 0);
     
 saveLand();
 }
