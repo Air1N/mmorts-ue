@@ -162,7 +162,7 @@ for (let i = 0; i < continents; i++) {
     }]);
 }
 
-const landSize = 1;
+const landSize = 1000;
 
 for (let mm = 0; mm < continents; mm++) {
     console.log('generating continent ' + (mm + 1));
