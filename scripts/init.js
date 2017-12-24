@@ -19,7 +19,7 @@ let property = [];
 
 let players = 200;
 
-let zoomLevel = 1;
+let zoomLevel = Infinity;
 
 let zoomLayers = 1;
 
