@@ -115,6 +115,14 @@ function enhanceLand(k) {
     }
     
     landVersion++;
+    
+    io.emit('initValues', {
+        landPoints: JSON.stringify(landPoints),
+        property: property,
+        continents: continents,
+        landSize: landSize,
+        players: players
+    });
     /*
     console.log('final enhance');
     console.log('step 1/3');
