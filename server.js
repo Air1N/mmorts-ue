@@ -106,17 +106,18 @@ function generateLand(k, f) {
 }
 
 function enhanceLand(k) {
-    console.log('enhance step ' + landVersion);
     count += 2;
     
-    if (count > landPoints[k].length - 2) count = 0;
+    if (count > landPoints[k].length - 2) {
+        count = 0;
+        console.log('enhance step ' + landVersion);
+        landVersion++;
+    }
     
     landPoints[k].splice(count + 1, 0, {
         x: Math.round((landPoints[k][count].x + ((landPoints[k][count + 1].x - landPoints[k][count].x) / 2) + Math.round((Math.random() * 2 - 1)) * landSize / Math.pow(2, (landVersion + 1) / 1.3)) * 1000) / 1000,
         y: Math.round((landPoints[k][count].y + ((landPoints[k][count + 1].y - landPoints[k][count].y) / 2) + Math.round((Math.random() * 2 - 1)) * landSize / Math.pow(2, (landVersion + 1) / 1.3)) * 1000) / 1000
     });
-
-    landVersion++;
 
     io.emit('initValues', {
         landPoints: JSON.stringify(landPoints),
