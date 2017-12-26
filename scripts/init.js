@@ -71,8 +71,8 @@ window.onmousewheel = function(e) {
 				point.y *= delta;
 				
 
-				point.x -= mousex;
-				point.y -= mousey;
+				point.x -= mousex * 2 / delta;
+				point.y -= mousey * 2 / delta;
 			}
 		}
 		
@@ -81,8 +81,8 @@ window.onmousewheel = function(e) {
 				point.x *= delta;
 				point.y *= delta;
 				
-				point.x -= mousex;
-				point.y -= mousey;
+				point.x -= mousex * 2 / delta;
+				point.y -= mousey * 2 / delta;
 			}
 		}
 	}
