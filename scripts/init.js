@@ -58,7 +58,7 @@ window.onmousemove = function(e) {
 };
 
 window.onmousewheel = function(e) {
-	delta = e.wheelDelta / 90;
+	delta = e.wheelDelta / 60;
 	mousex = (e.clientX - display.getBoundingClientRect().left) * (display.width / display.clientWidth);
 	mousey = (e.clientY - display.getBoundingClientRect().top) * (display.height / display.clientHeight);
 
@@ -71,8 +71,8 @@ window.onmousewheel = function(e) {
 				point.y *= delta;
 				
 
-				point.x -= mousex * 2 / delta;
-				point.y -= mousey * 2 / delta;
+				point.x -= mousex;
+				point.y -= mousey;
 			}
 		}
 		
@@ -81,8 +81,8 @@ window.onmousewheel = function(e) {
 				point.x *= delta;
 				point.y *= delta;
 				
-				point.x -= mousex * 2 / delta;
-				point.y -= mousey * 2 / delta;
+				point.x -= mousex;
+				point.y -= mousey;
 			}
 		}
 	}
