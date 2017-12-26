@@ -20,11 +20,11 @@ function render() {
         ctx.moveTo(landPoints[i][0].x, landPoints[i][0].y);
         
         for (j = 1; j < landPoints[i].length - Math.max(Math.round(zoomLayers / zoomLevel), 1) - 1; j += Math.max(Math.round(zoomLayers / zoomLevel), 1)) {
-            if (landPoints[i][j].x < 0 - 500 * zoomLevel || landPoints[i][j].x > display.width + 500 * zoomLevel) {
+            if (landPoints[i][j].x < 0 - 2000 * zoomLevel || landPoints[i][j].x > display.width + 2000 * zoomLevel) {
                 continue;
             }
             
-            if (landPoints[i][j].y < 0 - 500 * zoomLevel || landPoints[i][j].y > display.height + 500 * zoomLevel) {
+            if (landPoints[i][j].y < 0 - 2000 * zoomLevel || landPoints[i][j].y > display.height + 2000 * zoomLevel) {
                 continue;
             }
             
