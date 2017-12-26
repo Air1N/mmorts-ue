@@ -58,17 +58,17 @@ window.onmousemove = function(e) {
 };
 
 window.onmousewheel = function(e) {
-	delta = e.wheelDelta / 60;
+	delta = e.wheelDelta / 90;
 	mousex = (e.clientX - display.getBoundingClientRect().left) * (display.width / display.clientWidth);
 	mousey = (e.clientY - display.getBoundingClientRect().top) * (display.height / display.clientHeight);
 
 	if (delta > 0 && zoomLevel < 256) {
-		zoomLevel *= 1.5;
+		zoomLevel *= delta;
 		
 		for (let i = 0; i < landPoints.length; i++) {
 			for (let point of landPoints[i]) {
-				point.x *= 1.5;
-				point.y *= 1.5;
+				point.x *= delta;
+				point.y *= delta;
 				
 
 				point.x -= mousex;
@@ -78,8 +78,8 @@ window.onmousewheel = function(e) {
 		
 		for (let id in property) {
 			for (let point of property[id]) {
-				point.x *= 1.5;
-				point.y *= 1.5;
+				point.x *= delta;
+				point.y *= delta;
 				
 				point.x -= mousex;
 				point.y -= mousey;
@@ -88,26 +88,26 @@ window.onmousewheel = function(e) {
 	}
 	
 	if (delta < 0 && zoomLevel > 1/32) {
-		zoomLevel /= 1.5;
+		zoomLevel /= delta;
 		
 		for (let i = 0; i < landPoints.length; i++) {
 			for (let point of landPoints[i]) {
-				point.x /= 1.5;
-				point.y /= 1.5;
+				point.x /= Math.abs(delta);
+				point.y /= Math.abs(delta);
 				
 				
-				point.x += mousex / 1.5;
-				point.y += mousey / 1.5;
+				point.x += mousex / Math.abs(delta);
+				point.y += mousey / Math.abs(delta);
 			}
 		}
 		
 		for (let id in property) {
 			for (let point of property[id]) {
-				point.x /= 1.5;
-				point.y /= 1.5;
+				point.x /= Math.abs(delta);
+				point.y /= Math.abs(delta);
 		
-				point.x += mousex / 1.5;
-				point.y += mousey / 1.5;
+				point.x += mousex / Math.abs(delta);
+				point.y += mousey / Math.abs(delta);
 			}
 		}
 	}
