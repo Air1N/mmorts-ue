@@ -88,7 +88,7 @@ window.onmousewheel = function(e) {
 	}
 	
 	if (delta < 0 && zoomLevel > 1/32) {
-		zoomLevel /= delta;
+		zoomLevel /= Math.abs(delta);
 		
 		for (let i = 0; i < landPoints.length; i++) {
 			for (let point of landPoints[i]) {
