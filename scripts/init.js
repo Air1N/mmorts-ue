@@ -63,12 +63,12 @@ window.onmousewheel = function(e) {
 	mousey = (e.clientY - display.getBoundingClientRect().top) * (display.height / display.clientHeight);
 
 	if (delta > 0 && zoomLevel < 256) {
-		zoomLevel *= delta;
+		zoomLevel *= 1.5;
 		
 		for (let i = 0; i < landPoints.length; i++) {
 			for (let point of landPoints[i]) {
-				point.x *= delta;
-				point.y *= delta;
+				point.x *= 1.5;
+				point.y *= 1.5;
 				
 
 				point.x -= mousex;
@@ -78,8 +78,8 @@ window.onmousewheel = function(e) {
 		
 		for (let id in property) {
 			for (let point of property[id]) {
-				point.x *= delta;
-				point.y *= delta;
+				point.x *= 1.5;
+				point.y *= 1.5;
 				
 				point.x -= mousex;
 				point.y -= mousey;
@@ -88,26 +88,26 @@ window.onmousewheel = function(e) {
 	}
 	
 	if (delta < 0 && zoomLevel > 1/32) {
-		zoomLevel /= Math.abs(delta);
+		zoomLevel /= 1.5;
 		
 		for (let i = 0; i < landPoints.length; i++) {
 			for (let point of landPoints[i]) {
-				point.x /= Math.abs(delta);
-				point.y /= Math.abs(delta);
+				point.x /= 1.5;
+				point.y /= 1.5;
 				
 				
-				point.x += mousex / Math.abs(delta);
-				point.y += mousey / Math.abs(delta);
+				point.x += mousex / 1.5;
+				point.y += mousey / 1.5;
 			}
 		}
 		
 		for (let id in property) {
 			for (let point of property[id]) {
-				point.x /= Math.abs(delta);
-				point.y /= Math.abs(delta);
+				point.x /= 1.5;
+				point.y /= 1.5;
 		
-				point.x += mousex / Math.abs(delta);
-				point.y += mousey / Math.abs(delta);
+				point.x += mousex / 1.5;
+				point.y += mousey / 1.5;
 			}
 		}
 	}
