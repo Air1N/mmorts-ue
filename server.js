@@ -164,8 +164,23 @@ function generateProperty(k) {
     }
     
     landPoints[k].push({
-        x: landPoints[k][0].x + (landPoints[k][0].x - landPoints[k][1].x) / 2,
-        y: landPoints[k][0].y + (landPoints[k][0].y - landPoints[k][1].y) / 2
+        x: landPoints[k][0].x + (landPoints[k][0].x - landPoints[k][1].x) / 5 + (Math.random() * 4 - 2) / 1000,
+        y: landPoints[k][0].y + (landPoints[k][0].y - landPoints[k][1].y) / 5 + (Math.random() * 4 - 2) / 1000
+    });
+
+    landPoints[k].push({
+        x: landPoints[k][0].x + (landPoints[k][0].x - landPoints[k][1].x) / 5 * 2 + (Math.random() * 4 - 2) / 1000,
+        y: landPoints[k][0].y + (landPoints[k][0].y - landPoints[k][1].y) / 5 * 2 + (Math.random() * 4 - 2) / 1000
+    });
+	
+    landPoints[k].push({
+        x: landPoints[k][0].x + (landPoints[k][0].x - landPoints[k][1].x) / 5 * 3 + (Math.random() * 4 - 2) / 1000,
+        y: landPoints[k][0].y + (landPoints[k][0].y - landPoints[k][1].y) / 5 * 3 + (Math.random() * 4 - 2) / 1000
+    });
+
+    landPoints[k].push({
+        x: landPoints[k][0].x + (landPoints[k][0].x - landPoints[k][1].x) / 5 * 4 + (Math.random() * 4 - 2) / 1000,
+        y: landPoints[k][0].y + (landPoints[k][0].y - landPoints[k][1].y) / 5 * 4 + (Math.random() * 4 - 2) / 1000
     });
 	
     landPoints[k].push({
