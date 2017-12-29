@@ -144,9 +144,9 @@ function generateProperty(k) {
         y: randompoint.y
     });
 
-    for (let j = 0; j < 20; j++) {
-        let randomx = landSize * Math.round(Math.random() * 4 - 2) / 1000;
-        let randomy = landSize * Math.round(Math.random() * 4 - 2) / 1000;
+    for (let j = 0; j < 50; j++) {
+        let randomx = landSize * Math.round(Math.random() * 4 - 2) / 500;
+        let randomy = landSize * Math.round(Math.random() * 4 - 2) / 500;
 
         let currentx = property[k][property[k].length - 1].x;
         let currenty = property[k][property[k].length - 1].y;
