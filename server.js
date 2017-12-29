@@ -150,18 +150,28 @@ function generateProperty(k) {
 
         let currentx = property[k][property[k].length - 1].x;
         let currenty = property[k][property[k].length - 1].y;
-
+	
         for (let i = 0; i < property[k].length; i++) {
             if (property[k][i].x == currentx + randomx && property[k][i].y == currenty + randomy) {
                 continue;
             }
         }
-
+	    
         property[k].push({
             x: currentx + randomx,
             y: currenty + randomy
         });
     }
+    
+    landPoints[k].push({
+        x: landPoints[k][0].x + (landPoints[k][0].x - landPoints[k][1].x) / 2,
+        y: landPoints[k][0].y + (landPoints[k][0].y - landPoints[k][1].y) / 2
+    });
+	
+    landPoints[k].push({
+        x: landPoints[k][0].x,
+        y: landPoints[k][0].y
+    });
 }
 
 for (let i = 0; i < continents; i++) {
