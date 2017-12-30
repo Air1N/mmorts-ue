@@ -59,10 +59,8 @@ function render() {
 }
 
 socket.on('initValues', function(data) {
-    landPoints = JSON.parse(data.landPoints);
+    if (landPoints[0].length < 10) landPoints = JSON.parse(data.landPoints);
     property = data.property;
-    continents = data.continents;
-    players = data.players;
 });
 
 socket.on('id', function(uID) {
