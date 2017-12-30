@@ -59,7 +59,7 @@ function render() {
 }
 
 socket.on('initValues', function(data) {
-    if (landPoints[0].length < 10) landPoints = JSON.parse(data.landPoints);
+    if (landPoints.length < 1) landPoints = JSON.parse(data.landPoints);
     property = data.property;
 });
 
